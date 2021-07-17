@@ -1,0 +1,96 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+\title{Protocolo de trabajo terminal}
+\usepackage[spanish]{babel} %Indica que escribiremos en español
+\usepackage[utf8]{inputenc} %Indica qué codificación se está usando ISO-8859-1(latín1)  o utf8  
+\usepackage{amsmath} % Comandos extras para matemáticas (cajas para ecuaciones, etc)
+\usepackage{amssymb} % Símbolos matemáticos (por lo tanto)
+\usepackage{graphicx} % Incluir imágenes en LaTeX
+\usepackage{color} % Para colorear texto
+\usepackage{subfigure} % subfiguras
+\usepackage{float} %Podemos usar el especificador [H] en las figuras para que se
+% queden donde queramos
+\usepackage{capt-of} % Permite usar etiquetas fuera de elementos flotantes
+% (etiquetas de figuras)
+\usepackage{sidecap} % Para poner el texto de las imágenes al lado
+	\sidecaptionvpos{figure}{c} % Para que el texto se alineé al centro vertical
+\usepackage{caption} % Para poder quitar numeración de figuras
+\usepackage{commath} % funcionalidades extras para diferenciales, integrales,
+% etc (\od, \dif, etc)
+\usepackage{cancel} % para cancelar expresiones (\cancelto{0}{x})
+
+\usepackage{blindtext}
+\usepackage{multicol} 
+
+\usepackage{anysize} 					% Para personalizar el ancho de  los márgenes
+\marginsize{2.54cm}{2.54cm}{2.54cm}{2.54cm} % Izquierda, derecha, arriba, abajo
+\usepackage[colorlinks=true,plainpages=true,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}\usepackage{pslatex}
+\newdimen\tamanyo
+\newdimen\interlinea
+\def\letra#1#2{%
+\tamanyo=#1%
+\interlinea=1.2\tamanyo%
+\fontfamily{ptm}
+\fontsize{\the\tamanyo}%
+{\the\interlinea}\selectfont#2}
+
+\hypersetup{
+	pdftoolbar=true,        % show Acrobat’s toolbar?
+	pdfmenubar=true,        % show Acrobat’s menu?
+	pdffitwindow=false,     % window fit to page when opened
+	pdfstartview={FitH},    % fits the width of the page to the window
+	pdftitle={\ttno},    % title
+	pdfauthor={\me},     % author
+	pdfsubject={TT 2021-A046},   % subject of the document
+	pdfcreator={\me},   % creator of the document
+	pdfproducer={XELATEX}, % producer of the document
+	%pdfkeywords={análisis de imagenes} {glucometro} {glucosas} {aplicaciones m\'oviles} 
+}
+
+\begin{document}
+\begin{center}
+    \letra{14pt}{\textbf{Título del trabajo terminal}} \\
+    \letra{12pt}{\textbf{\textit{Trabajo terminal No. -}}} \\
+    \letra{12pt}{\textit{Alumnos: Hernández Ramírez Josué David}} \\
+    \letra{12pt}{\textit{Directores: Dr. Ramírez Díaz Mario Humberto}} \\
+    \letra{12pt}{\textit{*email: \url{josuehernandezr1605@alumno.ipn.mx}}}
+\end{center}
+\\
+\textbf{Resumen -} El presente trabajo terminal cuyo objetivo es calcular predicciones de procesos electorales en base a diferentes técnicas como la socio-física y los algoritmos genéticos.
+\vspace{5mm} %5mm vertical space
+\\
+\textbf{Palabras clave -} Minería de datos, Política, Socio-física.
+
+\section{Introducción}
+
+La socio-físico es una nueva rama interdisciplinaria de la física que aboga por el uso de los métodos y conceptos de la física de sistemas complejos para el estudio de interacciones colectivas en sociedades y de los fenómenos sociales como propiedades emergentes de un conjunto de individuos.
+\vspace{5mm} %5mm vertical space
+\\
+En este trabajo terminal se muestran los resultados de utilizar el enfoque socio-físico para la predicción de procesos electorales, siguiendo los trabajos realizados por Serge Galam.
+
+\section{Objetivo}
+Desarrollar un sistema de cálculo basado en el enfoque de socio-físico que permita realizar predicciones de resultados en los procesos electorales, estas predicciones están basadas en datos recolectados con el Programa de Resultados Electorales Preliminares de elecciones anteriores.
+
+\section{Justificación}
+
+
+
+\section{Productos o Resultados esperados}
+
+\section{Metodología}
+
+\section{Cronograma}
+
+\section{Referencia}
+
+\section{Alumnos y directores}
+
+\begin{multicols*}{2}
+    \textit{Hernández Ramírez Josué David.- }Alumno de la carrera de Ingeniería en Sistemas Computacionales en la Escuela Superior de Cómputo, Especialidad Sistemas, Boleta: 2017630771, Tel. 7712413847, email \url{jhernandezr1605@alumno.ipn.mx} \\ \\
+    
+    Firma: \rule{7cm}{1pt}
+\end{multicols*}
+
+\end{document}
