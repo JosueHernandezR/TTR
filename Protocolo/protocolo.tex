@@ -29,7 +29,9 @@
 \usepackage[T1]{fontenc}\usepackage{pslatex}
 
 % Bibliografía
-\usepackage{biblatex} %Imports biblatex package
+\usepackage[
+sorting=ynt
+]{biblatex} %Imports biblatex package
 \addbibresource{bibliografia/bibliografia.bib} %Import the bibliography file
 
 % Tamaño de fuente
@@ -47,34 +49,34 @@
 	pdfmenubar=true,        % show Acrobat’s menu?
 	pdffitwindow=false,     % window fit to page when opened
 	pdfstartview={FitH},    % fits the width of the page to the window
-	pdftitle={\ttno},    % title
-	pdfauthor={\me},     % author
-	pdfsubject={TT 2021-A046},   % subject of the document
-	pdfcreator={\me},   % creator of the document
+	pdftitle={Sistema de predicción enfocado a procesos electorales con base en la socio-física},    % title
+	pdfauthor={Josué David Hernandez Ramirez},     % author
+	pdfsubject={TTR},   % subject of the document
+	pdfcreator={Josué David Hernández Ramírez},   % creator of the document
 	pdfproducer={XELATEX}, % producer of the document
 	%pdfkeywords={análisis de imagenes} {glucometro} {glucosas} {aplicaciones m\'oviles} 
 }
 
+
 \begin{document}
 \begin{center}
-    \letra{14pt}{\textbf{Título del trabajo terminal}} \\
+    \letra{14pt}{\textbf{Sistema de predicción enfocado a procesos electorales con base en la socio-física}}\\
     \letra{12pt}{\textbf{\textit{Trabajo terminal No. -}}} \\
     \letra{12pt}{\textit{Alumnos: Hernández Ramírez Josué David}} \\
     \letra{12pt}{\textit{Directores: Dr. Ramírez Díaz Mario Humberto}} \\
-    \letra{12pt}{\textit{*email: \url{josuehernandezr1605@alumno.ipn.mx}}}
+    \letra{12pt}{\textcolor{black}{\textit{*email: \url{josuehernandezr1605@alumno.ipn.mx}}}}
 \end{center}
-\\
+\newline
 \textbf{Resumen -} El presente trabajo terminal propone usar el enfoque socio físico para la predicción de resultados en los procesos electorales, teniendo como guía los trabajos de Galam. Se realizará un sistema computacional que refleje los resultados teóricos propuestos por Galam enfocando los algoritmos socio físicos a este tema. El sistema computacional tiene como objetivo el calcular predicciones de procesos electorales usando formulas matemáticas y autómatas celulares.
 \newline
-\newline
-\textbf{Palabras clave -} Física, Matemáticas, Minería de datos, Política, Socio-física.
+\textbf{Palabras clave -} Física, Matemáticas, Minería de datos, Política, Socio-física, Autómata celular.
 
 \section{Introducción}
 
-La socio-físico es una nueva rama interdisciplinaria de la física que aboga por el uso de los métodos y conceptos de la física de sistemas complejos para el estudio de interacciones colectivas en sociedades y de los fenómenos sociales como propiedades emergentes de un conjunto de individuos. \cite{MarioH.RamirezDiaz2014}
-\vspace{5mm} %5mm vertical space
-\\
-Con los conceptos que existen relacionados a la socio física actualmente que cubren varios temas como: redes sociales, evolución de los lenguajes, dinamismo de la población, crecimiento epidemiológico, terrorismo, elecciones electorales entre otros, se desarrollará un sistema computacional enfocado a resolver el problemas de las elecciones electorales relacionados con el éxito o fracaso de estas.
+La socio-físico es una nueva rama interdisciplinaria de la física que aboga por el uso de los métodos y conceptos de la física de sistemas complejos para el estudio de interacciones colectivas en sociedades y de los fenómenos sociales como propiedades emergentes de un conjunto de individuos. \cite{MarioH.RamirezDiaz2014} 
+\newline
+\newline
+Con los conceptos que existen relacionados a la socio física actualmente que cubren varios temas como: redes sociales, evolución de los lenguajes, dinamismo de la población, crecimiento epidemiológico, terrorismo, elecciones electorales entre otros, se desarrollará un sistema computacional enfocado a resolver el problemas de las elecciones electorales relacionados con el éxito o fracaso de estas. \cite{Galam.1986}
 
 \section{Objetivo}
 Desarrollar un sistema de cálculo basado en el enfoque de socio-físico que permita realizar predicciones de resultados en los procesos electorales. 
@@ -85,17 +87,30 @@ Desarrollar un sistema de cálculo basado en el enfoque de socio-físico que per
 La aplicación de la teoría de la socio-física en el ámbito político de México nos ayudaría a tener un panorama mas claro sobre las predicciones electorales con base a los datos recolectados de elecciones anteriores para estimar el grado de aceptación para un partido político determinado.
 \newline
 \newline
-Para los políticos puede proporcionar resultados estimados sobre la confiabilidad y aceptación en un proceso electoral. Para la población en general ayudará a entender de manera mas clara y directa el panorama político en donde viva.
+Para los políticos puede proporcionar resultados estimados sobre la confiabilidad y aceptación en un proceso electoral mediante la socio-física y no solamente probabilísticos.
 
 \section{Productos o Resultados esperados}
-El producto final será una pagina web donde se podrá consultar las estimaciones.
+El producto final será:
+\begin{itemize}
+    \item Sistema computacional
+    \item Manual de usuario
+\end{itemize}
 
 \section{Metodología}
 
-Para este trabajo terminal se utilizará la metodología de desarrollo rápido de aplicaciones (DRA), dado que el tiempo de desarrollo es corto, esta metodología permite centrarse en el producto final, hace hincapié en el desarrollo de prioridades y la definición de los plazos de entrega, si estos empiezan a atrasarse permite la reducción de requisitos para el ajuste y de esta manera no aumentar la fecha limite de entrega. Por otro lado la participación de los usuarios es necesaria para el diseño del sistema.
+Para este trabajo terminal se utilizará la metodología de desarrollo rápido de aplicaciones (DRA), dado que el tiempo de desarrollo es corto, esta metodología permite centrarse en el producto final, hace hincapié en el desarrollo de prioridades y la definición de los plazos de entrega, si estos empiezan a atrasarse permite la reducción de requisitos para el ajuste y de esta manera no aumentar la fecha limite de entrega. Por otro lado la participación de los usuarios es necesaria para el diseño del sistema.\cite{dra}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.50]{Protocolo/images/4x/RAD@4x.png}
+    \caption{Desarrollo rápido de aplicaciones}
+    \label{graphic:PRecordatorio}
+\end{figure}
 
+\newpage
 \section{Cronograma}
-
+\newline
+Nombre del alumno: \textit{Hernández Ramírez Josué David}
+Título del TT: Sistema de predicción enfocado a procesos electorales con base en la socio-física.
 \newpage
 \section{Referencias}
 \printbibliography[heading=none] %Prints bibliography
