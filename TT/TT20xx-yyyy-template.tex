@@ -64,7 +64,8 @@
 		fill=escom]
 		{\color{white}\chapterlabel#1};
 		\node[inner sep=0pt] at (2,0)
-		{\includegraphics[width=.1\textwidth]{example-image}};
+		% Logo de trabajo terminal
+		%{\includegraphics[width=.1\textwidth]{example-image}};
 		\end{tikzpicture}
 	};
 \end{tikzpicture}
@@ -85,6 +86,8 @@
    \newcommand*\DAlambert{\mathop{}\!\mathbin\Box}
 \usepackage{wrapfig} 
 \usepackage{csquotes}
+
+%Bibliografía - Sustituir por Natbib
 \usepackage[backend=bibtex]{biblatex}
 \bibliography{./bib/Pattern_Recognition.bib}
 \bibliography{./bib/Biometrics.bib}
@@ -145,27 +148,17 @@
 \titleCover
 \maketitle
  
-
-
 \preface
  
-
 \includepdf[pages=-]{cartaResponsiva/cresp.pdf}
 \input{advertencia/advertencia}
 \input{dedication/dedication}
 \input{acknowledgements/acknowledgements}
 \input{quotes/quotes}
 \input{abstract/abstract}
-      
-      
-      
-      
-      
-      
 
 \body
 \cleardoublepage
- 
 
 \input{introduction/introduction}
 \input{overview/overview}
@@ -183,8 +176,11 @@
 
 
  \listofmyequations
+ 
+ % Aquí van las referencias
 \input{cbibliografia/cbibliografia}
 
+% Glosario
 \printnoidxglossaries
 \vspace*{5cm}
 \begin{flushright}
