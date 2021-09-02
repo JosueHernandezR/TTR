@@ -27,11 +27,7 @@
 \usepackage{appendix}
 \usepackage{multicol}
 \usepackage{enumitem}
-
-
-\usepackage{wrapfig}
-\usepackage[rightcaption]{sidecap}
-
+\usepackage{authblk}
 \newcommand*\mycirc[1]{%
 	\begin{tikzpicture}[baseline=(C.base)]
 	\node[draw,circle,inner sep=1pt,minimum size=3ex,fill=escom,escom](C) {\color{white}#1};
@@ -41,17 +37,18 @@
 \usepackage[explicit]{titlesec}
 \usepackage[titles]{tocloft}
  
- 
+
+\usepackage[acronym, toc]{glossaries}
 
 \newlength\mylength
 \renewcommand\cftchappresnum{\chaptername~}
 \renewcommand\cftchapaftersnum{:}
 \settowidth\mylength{\cftchappresnum\cftchapaftersnum\quad}
 \addtolength\cftchapnumwidth{\mylength}
- \newcommand{\listequationsname}{Lista de Ecuaciones}
- \newlistof{myequations}{equ}{\listequationsname}
- \newcommand{\myequations}[1]{%
- 	\addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par}
+\newcommand{\listequationsname}{Lista de Ecuaciones}
+\newlistof{myequations}{equ}{\listequationsname}
+\newcommand{\myequations}[1]{%
+\addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par}
 
 \newcommand*\chapterlabel{}
 \titleformat{\chapter}
@@ -68,8 +65,7 @@
 		fill=escom]
 		{\color{white}\chapterlabel#1};
 		\node[inner sep=0pt] at (2,0)
-		% Logo de trabajo terminal
-		%{\includegraphics[width=.1\textwidth]{example-image}};
+		{\includegraphics[width=.1\textwidth]{TT/img/logo.png}};
 		\end{tikzpicture}
 	};
 \end{tikzpicture}
@@ -78,26 +74,64 @@
 
 \usepackage{float} 
  
-    \usepackage{subcaption}
-   \usepackage{caption}
+\usepackage{caption}
 
-   \newcommand{\repeatcaption}[2]{%
-   	\renewcommand{\thefigure}{\ref{#1}}%
-   	\captionsetup{list=no}%
+\newcommand{\repeatcaption}[2]{%
+\renewcommand{\thefigure}{\ref{#1}}%
+    \captionsetup{list=no}%
    	\caption{#2 (repeated from page \pageref{#1})}%
-   } 
-   \newcommand*\Laplace{\mathop{}\!\mathbin\bigtriangleup}
-   \newcommand*\DAlambert{\mathop{}\!\mathbin\Box}
+   }
+\newcommand*\Laplace{\mathop{}\!\mathbin\bigtriangleup}
+\newcommand*\DAlambert{\mathop{}\!\mathbin\Box}
 \usepackage{wrapfig} 
 \usepackage{csquotes}
 
-%Bibliografía - Sustituir por Natbib
+\usepackage{subfigure}
+\usepackage { etex }
+\usepackage{amssymb}
+
 \usepackage[square,numbers]{natbib}
 \bibliographystyle{unsrtnat}
 
 \usepackage[spanish]{translator}
- \usepackage{booktabs}\usepackage{minitoc}
- \usepackage[final]{pdfpages}
+\usepackage{booktabs}\usepackage{minitoc}
+\usepackage[final]{pdfpages}
+
+\usepackage{wrapfig}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage[rightcaption]{sidecap}
+
+% Código
+\usepackage{listings}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
  
 \include{thesis.preamble}
 
@@ -110,10 +144,10 @@
 	pdfstartview={FitH},    % fits the width of the page to the window
 	pdftitle={\ttno},    % title
 	pdfauthor={\me},     % author
-	pdfsubject={TT 20xx-YYYY},   % subject of the document
+	pdfsubject={TT 2021-YYYY},   % subject of the document
 	pdfcreator={\me},   % creator of the document
 	pdfproducer={XELATEX}, % producer of the document
-	pdfkeywords={análisis de imagenes} {análisis de rasgos faciales} {ciencias forenses} {reconocimiento de patrones} 
+	pdfkeywords={sociofísica} {algoritmos genéticos} {Politica} {aplicaciones de escritorio} 
 }
 \begin{document}
 
@@ -122,7 +156,7 @@
 }
 
 \author{\me}
-\submitdate{Noviembre, 2015}
+\submitdate{Diciembre, 2021}
 
 \normallinespacing
 \titleCover
@@ -151,13 +185,11 @@
 \input{implementacion/implementacion2inc}
 \input{conclusiones/conclusiones}
  
- 
- 
 
 
-
-%\listofmyequations
- 
+%Ver como se hicieron las otras ecuaciones
+\listofmyequations
+ \include{apendices/apendices}
  % Aquí van las referencias
 \input{cbibliografia/cbibliografia}
 

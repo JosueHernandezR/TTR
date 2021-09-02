@@ -1,0 +1,67 @@
+\newpage
+\appendix
+\chapter*{Ejemplo de código} \label{aped.A}
+\addcontentsline{toc}{chapter}{Ejemplo de código}
+\section*{Ejemplo de programación en Flutter}
+\addcontentsline{toc}{section}{Ejemplo de diseño en Flutter}
+%\thispagestyle{empty}	
+El siguiente diseño se encuentra en el ejemplo \ref{lst:diseño1}.
+\newline
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale = 0.9]{img/apendices/layaout.jpg}
+    \caption{Diseño de ejemplo en Flutter}
+    \label{fig:my_label}
+\end{figure}
+
+
+El diseño consiste en una estructura de árbol con un Container como widget raíz. El widget Container permite cierta personalización del widget hijo, en este caso algo de relleno alrededor del widget Row secundario. El widget Row describe una secuencia horizontal de widget: el primero es un Column (una secuencia vertical de widgets) de dos Text widgets, el segundo es un icono y el tercero es otro Text widget. Para que la segunda parte de la fila se vacíe a la derecha, el Column widget se envuelve en un entorno expandido, lo que permite que el Column ocupe todo el espacio horizontal disponible.
+\newline
+\begin{lstlisting}[language=Python, caption=Código de diseño de ejemplo, label={lst:diseño1}]
+Widget titleSection = Container(
+  padding: const EdgeInsets.all(32),
+  child: Row(
+    children: [
+      Expanded(
+        /*1*/
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            /*2*/
+            Container(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Text(
+                'Oeschinen Lake Campground',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Text(
+              'Kandersteg, Switzerland',
+              style: TextStyle(
+                color: Colors.grey[500],
+              ),
+            ),
+          ],
+        ),
+      ),
+      /*3*/
+      Icon(
+        Icons.star,
+        color: Colors.red[500],
+      ),
+      Text('41'),
+    ],
+  ),
+);
+
+\end{lstlisting}
+
+%\clearpage
+%\appendix
+%\includepdf[scale=0.85,pages=1,pagecommand=\chapter*{Patente de análisis de muestras}\label{Apend. B} \addcontentsline{toc}{chapter}{Patente de análisis de muestras}]{pdf/Glucometro-patenteUS7276147.pdf}
+%\includepdf[pages=2-]{pdf/Glucometro-patenteUS7276147.pdf}
+
+\clearpage
