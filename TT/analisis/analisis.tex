@@ -76,7 +76,6 @@ Dart es un lenguaje de programación orientado a objetos y definido por clases. 
 El motor de ejecución de Dart puede ser \acrfull{AOT} compilado en código nativo rápido y predecible, lo que permite que casi todo Flutter sea escrito en Dart. Esto no sólo hace que Flutter sea rápido, sino que prácticamente todo (incluidos todos los widgets) se puede personalizar. Dart facilita la creación de animaciones y transiciones suaves que se ejecutan a 60fps.
 
 Además, Dart es declarativo y, por lo tanto, permite evitar la necesidad de un lenguaje de diseño declarativo separado como \Gls{JSX} o \Gls{XML}, o constructores de interfaz visual separados. Todo el diseño se realiza en un idioma y en el mismo archivo, por lo que es fácil tener herramientas avanzadas que hacen que el diseño y la construcción del diseño sean muy rápidos.
-\newline
 
 \textbf{Todo es un Widget}
 
@@ -118,9 +117,50 @@ En la figura \ref{graphic:UITree} se muestra el árbol de widgets que subyace al
 Para ver un ejemplo en código, ir hacia el apéndice \ref{aped.A}
 
 \subsubsection{Python y FastApi}
+Python es un lenguaje de programación interpretado cuya filosofía hace hincapié en la legibilidad de su código. Se trata de un lenguaje de programación multiparadigma, ya que soporta parcialmente la orientación a objetos, programación imperativa y, en menor medida, programación funcional. Es un lenguaje interpretado, dinámico y multiplataforma.
 
+Es administrado por la Python Software Foundation. Posee una licencia de código abierto, denominada Python Software Foundation License. Python se clasifica constantemente como uno de los lenguajes de programación más populares.
+
+Python usa tipado dinámico y conteo de referencias para la administración de memoria.
+
+Una característica importante de Python es la resolución dinámica de nombres; es decir, lo que enlaza un método y un nombre de variable durante la ejecución del programa (también llamado enlace dinámico de métodos).
+
+Otro objetivo del diseño del lenguaje es la facilidad de extensión. Se pueden escribir nuevos módulos fácilmente en C o C++. Python puede incluirse en aplicaciones que necesitan una interfaz programable.
+
+Aunque la programación en Python podría considerarse en algunas situaciones hostil a la programación funcional tradicional del Lisp, existen bastantes analogías entre Python y los lenguajes minimalistas de la familia Lisp como puede ser Scheme.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.1]{TT/img/analisis/pythonlogo.png}
+    \caption{Logo de Python}
+    \label{graphic:PythonLogo}    
+\end{figure}
+
+\textbf{FastApi}
+
+FastAPI es un web framework moderno y rápido (de alto rendimiento) para construir APIs con Python 3.6+ basado en las anotaciones de tipos estándar de Python.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.250]{TT/img/analisis/logofastapi.png}
+    \caption{Logo de FastApi}
+    \label{graphic:logoFastApi}
+\end{figure}
+Sus características principales son:
+\begin{itemize}
+    \item \textbf{Rapidez: }Alto rendimiento, a la par con NodeJS y Go (gracias a Starlette y Pydantic). Uno de los frameworks de Python más rápidos.
+    \item \textbf{Rápido de programar: }Incrementa la velocidad de desarrollo entre 200\% y 300\%.*
+    \item \textbf{Menos errores: }Reduce los errores humanos (de programador) aproximadamente 40\%.*
+    \item \textbf{Intuitivo: }Gran soporte en los editores con autocompletado en todas partes. Gasta menos tiempo \textit{debbuging}.
+    \item \textbf{Fácil: }Está diseñado para ser fácil y aprender. Gastando menos tiempo leyendo documentación.
+    \item \textbf{Corto: }Minimiza la duplicación de código. Multiples funcionalidades con cada declaración de parámetros. Menos errores.
+    \item \textbf{Robusto: }Crea código listo para producción con documentación automática interactiva.
+    \item \textbf{Basado en estándares: }Basado y totalmente compatible con los estándares abiertos para APIs:  OpenAPI (conocido previamente como Swagger) y JSON Schema.
+\end{itemize}
+
+\textit{* Esta estimación está basada en pruebas con un equipo de desarrollo interno contruyendo aplicaciones listas para producción.}
 \section{Metodología}
-Para este trabajo terminal se utilizará la metodología de desarrollo rápido de aplicaciones (DRA), dado que el tiempo de desarrollo es corto, esta metodología permite centrarse en el producto final, hace hincapié en el desarrollo de prioridades y la definición de los plazos de entrega, si estos empiezan a atrasarse permite la reducción de requisitos para el ajuste y de esta manera no aumentar la fecha limite de entrega. Por otro lado la participación de los usuarios es necesaria para el diseño del sistema.\cite{dra}
+Para este trabajo terminal se utilizará la metodología de \acrfull{RAD}, dado que el tiempo de desarrollo es corto, esta metodología permite centrarse en el producto final, hace hincapié en el desarrollo de prioridades y la definición de los plazos de entrega, si estos empiezan a atrasarse permite la reducción de requisitos para el ajuste y de esta manera no aumentar la fecha limite de entrega. Por otro lado la participación de los usuarios es necesaria para el diseño del sistema.\cite{dra}
 
 \begin{figure}[!ht]
     \centering
@@ -129,8 +169,67 @@ Para este trabajo terminal se utilizará la metodología de desarrollo rápido d
     \label{graphic:RAD}
 \end{figure}
 \section{Requerimientos}
+Hasta este punto, se ha presentado conceptos teóricos con los que el sistema se basará para su desarrollo y se ha realizado un análisis de las herramientas y técnicas de programación que se usarán a lo largo del desarrollo del sistema, a continuación se describirá toda la funcionalidad que este tendrá.
 
 \subsection{Requerimientos funcionales}
+Para la comprensión de las tablas que describen los requerimientos son \textbf{RFSXXX} siendo su significado \textit{Requerimiento funcional de Software} y el último es \textbf{RNSXXX} siendo su significado \textit{Requerimiento no funcional de Software}.
 
+\begin{longtable}{|c|m{4cm}|m{9.5cm}|}
+    \hline
+    \rowcolor[HTML]{3531FF} 
+    {\color[HTML]{FFFFFF} Id} &{\color[HTML]{FFFFFF}Nombre} & {\color[HTML]{FFFFFF} Descripción} \\ \hline
+    \endfirsthead
+    \hline
+    \rowcolor[HTML]{3531FF} 
+    {\color[HTML]{FFFFFF} Id} &{\color[HTML]{FFFFFF}Nombre} & {\color[HTML]{FFFFFF} Descripción} \\
+    \hline 
+    \endhead
+    % aquí añadimos el fondo de todas las hojas, excepto de la última.
+    \multicolumn{3}{c}{Sigue en la página siguiente.}
+    \endfoot
+    % aquí añadimos el fondo de la última hoja.
+    \endlastfoot
+    RFS001&Analizar partido político&Poder analizar únicamente un partido político.\\ \hline
+    RFS002&Analizar un conjunto de partidos políticos&Poder analizar un conjunto de partidos políticos que se encuentran en competencia. \\ \hline
+    RFS003&Usuarios&El sistema debe permitir el registro de usuarios. \\ \hline
+    RFS004&Encuestas&Permitir la creación de encuestas mediante el uso de usuarios registrados. \\ \hline
+    RFS005&Visualización de datos&Permitir la visualización de los resultados obtenidos de encuestas a todos los usuarios del sistema. \\ \hline
+    RFS006&Guardar encuestas&El sistema debe guardar las encuestas creadas por los usuarios. \\\hline
+    RFS007&Encuestas&Las encuestas solo podrán ser de selección múltiple, lista desplegable y preguntas abiertas. \\ \hline
+    RFS008&Asignación de peso para respuestas&El sistema debe de poder dejar al usuario registrado asignar y editar pesos a las respuestas disponibles de cada pregunta. \\ \hline
+    RFS009&CRUD preguntas&El sistema debe dejar al usuario crear, editar, eliminar y guardar las preguntas de la encuesta. \\ \hline
+    RFS010&Resultado de encuesta&El sistema debe mostrar los resultados al finalizar la encuesta con el porcentaje de éxito o fracaso.\\ \hline
+    \caption{Requerimientos funcionales de la aplicación}
+    \label{table:RFS}
+\end{longtable}
 \subsection{Requerimientos no funcionales}
+Por otro lado, es necesario saber cuales son los requerimientos no funcionales, teniendo ambos tipos de requerimientos, nos damos una idea mas clara sobre que desarrollar y como hacerlo.
 
+\begin{longtable}{|c|m{4cm}|m{9.5cm}|}
+    \hline
+    \rowcolor[HTML]{3531FF} 
+    {\color[HTML]{FFFFFF} Id} &{\color[HTML]{FFFFFF}Nombre} & {\color[HTML]{FFFFFF} Descripción} \\ \hline
+    \endfirsthead
+    \hline
+    \rowcolor[HTML]{3531FF} 
+    {\color[HTML]{FFFFFF} Id} &{\color[HTML]{FFFFFF}Nombre} & {\color[HTML]{FFFFFF} Descripción} \\
+    \hline 
+    \endhead
+    % aquí añadimos el fondo de todas las hojas, excepto de la última.
+    \multicolumn{3}{c}{Sigue en la página siguiente.}
+    \endfoot
+    % aquí añadimos el fondo de la última hoja.
+    \endlastfoot
+    \hline
+    RNS001&Tipos de poblaciones&De acuerdo a los datos de entrada que se recibirán, la población inicial se clasificará en:
+    \begin{itemize}
+        \item \textbf{Población especial: }Se trata de un población que esta sujeta a condiciones especiales como por ejemplo: un nivel de abstención de mas de 90\% o factores externos al sistema sucedidos en la encuesta.
+        \item \textbf{Población promedio: }Una población sin condiciones especiales, donde el nivel de abstención es menor al 30\%.
+    \end{itemize}\\ \hline
+    RNS002&Factor de error&El factor de error que podría tener el sistema sería hasta de 30\% aproximadamente en caso de una población promedio y para una población especial el factor de error alcanzaría hasta el 50\% aproximadamente.\\ \hline
+    RNS003&Rango de pesos&El rango en los pesos de las respuestas debe ser de 1 a 5 para que el sistema sea convergente.\\ \hline
+    RNS004&Tiempo de respuesta&Para el caso de preguntas cerradas el tiempo de respuesta sería como máximo de 1 minuto aproximadamente y para preguntas abiertas un máximo de 5 minutos. \\ \hline
+    RNS005&Interfaces de usuario&Las interfaces deben de ser intuitivas y agradables al usuario.\\ \hline
+    \caption{Requerimientos no funcionales de la aplicación}
+    \label{table:RNS}
+\end{longtable}

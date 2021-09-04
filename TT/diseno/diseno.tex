@@ -1,22 +1,47 @@
 \chapter{Diseño}\label{diseno}
 
-\epigraph{\textit{Sometimes it is the people no one imagines anything of who do the things that no one can imagine.     
-	}}{\textit{— Alan Turing}}
-	\vspace*{8cm}
-	\begin{center}
-		\centering
-		\includegraphics[width=10.5cm]{example-image}
-	\end{center}
-	\thispagestyle{empty}
-	\newpage
-	\vspace*{1cm}
+\epigraph{\textit{Sometimes it is the people no one imagines anything of who do the things that no one can imagine.  
+}}{\textit{— Alan Turing}}
+\vspace*{8cm}
+\begin{center}
+	\centering
+	\includegraphics[width=10.5cm]{example-image}
+\end{center}
+\thispagestyle{empty}
+\newpage
+\vspace*{1cm}
+
+En el siguiente capítulo se ve un análisis más a fondo de las reglas de negocio que debe cumplir el sistema, así mismo, el modelo relacional, la arquitectura del sistema usando UML.
 
 \section{Reglas de negocio}
-
+\begin{longtable}{|l|p{4cm}|p{9.5cm}|}
+    \hline
+    \rowcolor[HTML]{329A9D} 
+    \multicolumn{3}{|c|}{\cellcolor[HTML]{329A9D}{\color[HTML]{FFFFFF} Reglas de negocio}} \\ \hline
+    \rowcolor[HTML]{3531FF} 
+    \multicolumn{1}{|c|}{\cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} ID}} & \multicolumn{1}{c|}{\cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} Nombre}} & \multicolumn{1}{c|}{\cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} Descripción}} \\ \hline
+    \endfirsthead
+    \hline
+    \rowcolor[HTML]{329A9D} 
+    \multicolumn{3}{|c|}{\cellcolor[HTML]{329A9D}{\color[HTML]{FFFFFF} Reglas de negocio}} \\ \hline
+    \rowcolor[HTML]{3531FF} 
+    \multicolumn{1}{|c|}{\cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} ID}} & \multicolumn{1}{c|}{\cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} Nombre}} & \multicolumn{1}{c|}{\cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} Descripción}} \\ \hline
+    \endhead
+    % aquí añadimos el fondo de todas las hojas, excepto de la última.
+    \multicolumn{3}{c}{Sigue en la página siguiente.}
+    \endfoot
+    % aquí añadimos el fondo de la última hoja.
+    \endlastfoot
+    \caption{Reglas de negocio}
+    \label{table:RNegocio}
+\end{longtable}
 \section{Casos de uso}
+Los requerimientos del sistema se transforman en casos de uso necesarios para plantear la infraestructura del sistema a nivel de implementación, el diagrama de casos de uso se muestra a continuación.
 
 \section{Diagramas de secuencia}
+Un diagrama de secuencia muestra la interacción de un conjunto de objetos en una aplicación a través del tiempo y se modela para cada caso de uso.
 
+A continuación se muestran los diagramas de secuencia necesarios por cada caso de uso referentes al módulo de predicción.
 \subsection{Realizar predicción}
 
 \subsubsection{Descripción del flujo de información}
