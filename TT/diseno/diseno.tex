@@ -14,7 +14,7 @@
 En el siguiente capítulo se ve un análisis más a fondo de las reglas de negocio que debe cumplir el sistema, así mismo, el modelo relacional, la arquitectura del sistema usando UML.
 
 \section{Reglas de negocio}
-\begin{longtable}{|l|p{4cm}|p{9.5cm}|}
+\begin{longtable}{|l|m{4cm}|m{9.5cm}|}
     \hline
     \rowcolor[HTML]{329A9D} 
     \multicolumn{3}{|c|}{\cellcolor[HTML]{329A9D}{\color[HTML]{FFFFFF} Reglas de negocio}} \\ \hline
@@ -32,6 +32,11 @@ En el siguiente capítulo se ve un análisis más a fondo de las reglas de negoc
     \endfoot
     % aquí añadimos el fondo de la última hoja.
     \endlastfoot
+    RN01&Encuestas&Las encuestas serán limitadas a 10 preguntas. \\ \hline
+    RN02&Peso de preguntas & El peso por defecto a cada pregunta creada será de 1.\\ \hline
+    RN03&Datos obligatorios & \\ \hline
+    RN04&Usuarios identificados & \\ \hline
+    RN05&Identificador de usuario único & La dirección de correo electrónico registrada será el identificador de cada usuario, por lo que no podrá haber duplicados. \\ \hline
     \caption{Reglas de negocio}
     \label{table:RNegocio}
 \end{longtable}
