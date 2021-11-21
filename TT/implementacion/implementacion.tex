@@ -10,3 +10,80 @@
 	\newpage
 \vspace*{2cm}
 
+\section{Desarrollo de logo}
+Se presenta el logo de SISPREL.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.25]{TT/img/sisprel.png}
+    \caption{Logo de SISPREL}
+    \label{graphic:SISPRELLogo}    
+\end{figure}
+
+\section{Configuración del entorno del sistema}
+Para el desarrollo del sistema y poder trabajarlo en cualquier lugar sin tener que hacer instalaciones o configuraciones para cada sistema operativo, se optó por usar contenedores. Para ello, se eligió el software de Docker para llevar acabo este fin. 
+
+El proyecto fue dividido en 4 contenedores, los cuales son:
+\begin{enumerate}
+    \item Proxy: Traefik 2.2
+    \item DB: Postgres 12
+    \item Backend: FastAPI
+    \item Frontend: VueJS
+\end{enumerate}
+
+\subsection{Traefik}
+Traefik es un enrutador/proxy inverso y un balanceador HTTP, TCP y UDP. Una herramienta que permite conectar distintas URL con el servicio que se requiera. Proporciona funcionalidades de intermediario que aumenta sus capacidades para realizar balanceo de carga o servir como gateway API. Además integra una Interfaz de usuario muy completa que nos da información sobre todo lo que ofrece. Para acceder a esta herramienta en el proyecto, de manera local se accede con la URL: localhost:8090.
+
+Sus principales características son:
+\begin{itemize}
+    \item \textbf{Enrutado y balanceo de carga: }capa de enrutado flexible en la capa 4 y 7, soporta los protocolos HTTP, HTTP/2, TCP, UDP, Websockets, gRPC, despliegues blue-green y canary, fijación de sesión o session stickness y comprobaciones de salud.
+    \item \textbf{Seguridad: }automatización de HTTP, soporte para Let’s Encrypt, certificados personalizados y autenticación.
+    \item \textbf{Configuración dinámica: }a través de descubrimiento de servicios (Kubernetes, Docker Swarm, Red Hat OpenShift, Rancher, Amazon ECS, key-value stores) y funcionales de intermediario o middelware (circuit breakers, reintentos, buffering, compresión de la respuesta, cabeceras o limitación de peticiones).
+    \item \textbf{Observabilidad: }posee un panel informativo de forma nativa, trazabilidad distribuida (Jaeger, Open Tracing, Zipkin) y métricas en tiempo real (Datadog, Grafana, InfluxDB, Prometheus, StatsD).
+\end{itemize}
+
+\subsection{Postgres}
+Postgres es la herramienta elegida de base de datos para el sistema. Se eligió por ser 100\% OpenSource. También cuenta con una imagen de docker con la cual se ha configurado y trabajado para realizar el sistema.
+
+\subsection{FastAPI}
+Continuamos con FastApi, es una herramienta que ayuda a desarrollar API's de manera rápida basada en Python. Se usó una imagen de Python en su version 3.9 en docker. A continuación se describirá el proceso de desarrollo de la API usando estas herramientas.
+
+\subsubsection{Preparando API}
+Para tener un control de los paquetes que vamos a usar, se ha elegido la herramienta Poetry, la cual nos ayuda a ordenar los paquetes a usar y que facilita la instalación de estos mismos en cualquier entorno en donde se despliegue el contenedor del sistema.
+
+Primero crearemos nuestro proyecto usando Poetry para ir instalando las dependencias que se requieren para que la API funcione correctamente. Las dependencias son: 
+\begin{itemize}
+    \item fastapi = "\^0.68.1"
+    \item SQLAlchemy = "\^1.4.25"
+    \item uvicorn = "\^0.15.0"
+    \item python-dotenv = "\^0.19.0"
+    \item python-multipart = "\^0.0.5"
+    \item python-jose = \{extras = [cryptography], version ="\^3.3.0"\}
+    \item passlib = "\^1.7.4"
+    \item pydantic = \{extras = [email], version ="\^1.8.2"\}
+    \item alembic = "\^1.7.3"
+    \item inflect = "\^5.3.0"
+    \item bcrypt = "\^3.2.0"
+    \item SQLAlchemy-Utils = "\^0.37.8"
+    \item psycopg2-binary = "\^2.9.1"
+    \item tenacity = "\^8.0.1"
+    \item pytest = "\^6.2.5"
+    \item mypy = "\^0.910"
+    \item sqlalchemy-stubs = "\^0.4"
+    \item flake8 = "\^3.9.2"
+    \item autoflake = "\^1.4"
+    \item isort = "\^5.9.3"
+    \item black = "\^21.9b0"
+    \item pytest-cov = "\^2.12.1"
+    \item numpy = "\^1.21.4"
+\end{itemize}
+
+Los dependencias destacadas son: 
+\begin{itemize}
+    \item \textbf{Fastapi: }Es la dependencia que contiene el framework con el que vamos a trabajar.
+    \item \textbf{SQLAlchemy: }Es una herramienta que permite trabajar las bases de datos como \gls{ORM} en Python.
+    \item \textbf{Uvicorn: }Es un servidor ASGI rápido. Uvicorn se basa en uvloop y httptools y es un miembro importante del ecosistema asincrónico de Python.
+    \item \textbf{Alembic: }es una herramienta de migración de bases de datos escrita por el autor de SQLAlchemy que permite versionar las bases de datos, en otras palabras, tener un historial de los cambios que se vayan realizando a la base de datos, ejemplo: cambiar el nombre de una tabla, el nombre de uno o varios atributos, las especificaciones de estos, etc.
+    \item \textbf{Psycopg2-binary: }es el adaptador de base de datos PostgreSQL para el lenguaje de programación Python.
+\end{itemize}
+
+
