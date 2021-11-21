@@ -165,3 +165,5 @@ class Ecuaciones:
     
     def get_resultados_ecuacion_general(self):
         return self.resultados
+
+    
