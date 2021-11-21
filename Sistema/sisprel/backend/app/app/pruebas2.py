@@ -165,5 +165,33 @@ class Ecuaciones:
     
     def get_resultados_ecuacion_general(self):
         return self.resultados
-
     
+
+
+r = 4
+p0 = 69
+n =3
+m = (r / 2) + 1
+l = m
+iaux = 0
+Ecuaciones = Ecuaciones()
+# for iaux in np.arange(iaux, 100):
+#     i = iaux / 100.0
+#     pr = 0.0
+#     praux = 0.0
+#     m = (r / 2) + 1
+#     l = m
+#     for l in np.arange(l, r):
+#         pr = pr + Ecuaciones.evalua_ecuacion_general(r=r, l=l, pn=i)
+
+#     for l in np.arange(l, r):
+#         praux = praux + Ecuaciones.evalua_ecuacion_general(r, l, pr)
+
+Ecuaciones.set_pcr(r)
+print("PCR", Ecuaciones.get_pcr())
+# print("Prueba", pr)
+# print("Prueba", praux)
+
+# Lambdar: Hay errores en Ecuacion general 
+Ecuaciones.set_lamdar(Ecuaciones.get_pcr(), r)
+print("Lambdar",Ecuaciones.get_lambdar())
