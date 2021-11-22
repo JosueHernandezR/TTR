@@ -19,6 +19,24 @@ Se presenta el logo de SISPREL.
     \label{graphic:SISPRELLogo}    
 \end{figure}
 
+\section{Estructura del proyecto}
+Para tener un control del proyecto, se presenta a continuación la estructura general con la cual se ha trabajado para tener una buena organización del sistema y sea fácil de entender donde va cada módulo del sistema, mas adelante se ahondará mas en cada sección del sistema.
+
+\begin{enumerate}
+    \item Frontend: En esta carpeta se almacenarán los módulos y el proyecto del Frontend del sistema, será desarrollado con JavaScript con el Framework VueJS
+    \item Backend: En esta carpeta se almacenará el entorno de Python con los paquetes y el sistema desarrollado.
+    \item Scripts: En esa carpeta se encontrarán los Scripts necesarios para construir y levantar de manera local el contenedor o subirlo en algun servicio en la nube.
+    \item Raíz: En la carpeta raíz o donde se encuentran las carpetas mencionadas anteriormente, se encuentran algunos archivos de configuración de los contenedores asi mismo un archivo .env donde se almacenan variables como puertos, contraseña, URLs y otras cosas para que los archivos de configuración de Docker los usen y al momento de modificar alguna variable solo se tenga que hacer en un solo archivo y de manera general.
+\end{enumerate}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.95]{TT/img/implementacion/carpetasGeneral.png}
+    \caption{Estructura general de SISPREL}
+    \label{graphic:carpetasGeneral}    
+\end{figure}
+
+
 \section{Configuración del entorno del sistema}
 Para el desarrollo del sistema y poder trabajarlo en cualquier lugar sin tener que hacer instalaciones o configuraciones para cada sistema operativo, se optó por usar contenedores. Para ello, se eligió el software de Docker para llevar acabo este fin. 
 
@@ -33,6 +51,13 @@ El proyecto fue dividido en 4 contenedores, los cuales son:
 \subsection{Traefik}
 Traefik es un enrutador/proxy inverso y un balanceador HTTP, TCP y UDP. Una herramienta que permite conectar distintas URL con el servicio que se requiera. Proporciona funcionalidades de intermediario que aumenta sus capacidades para realizar balanceo de carga o servir como gateway API. Además integra una Interfaz de usuario muy completa que nos da información sobre todo lo que ofrece. Para acceder a esta herramienta en el proyecto, de manera local se accede con la URL: localhost:8090.
 
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.1]{TT/img/implementacion/Traefik.logo.png}
+    \caption{Logo de Traefik}
+    \label{graphic:TraefikLogo}    
+\end{figure}
+
 Sus principales características son:
 \begin{itemize}
     \item \textbf{Enrutado y balanceo de carga: }capa de enrutado flexible en la capa 4 y 7, soporta los protocolos HTTP, HTTP/2, TCP, UDP, Websockets, gRPC, despliegues blue-green y canary, fijación de sesión o session stickness y comprobaciones de salud.
@@ -41,13 +66,20 @@ Sus principales características son:
     \item \textbf{Observabilidad: }posee un panel informativo de forma nativa, trazabilidad distribuida (Jaeger, Open Tracing, Zipkin) y métricas en tiempo real (Datadog, Grafana, InfluxDB, Prometheus, StatsD).
 \end{itemize}
 
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.2]{TT/img/implementacion/Traefik dashboard.png}
+    \caption{Dashboard de Traefik}
+    \label{graphic:TraefikDashboard}    
+\end{figure}
+
 \subsection{Postgres}
 Postgres es la herramienta elegida de base de datos para el sistema. Se eligió por ser 100\% OpenSource. También cuenta con una imagen de docker con la cual se ha configurado y trabajado para realizar el sistema.
 
 \subsection{FastAPI}
-Continuamos con FastApi, es una herramienta que ayuda a desarrollar API's de manera rápida basada en Python. Se usó una imagen de Python en su version 3.9 en docker. A continuación se describirá el proceso de desarrollo de la API usando estas herramientas.
+Continuamos con FastApi, es una herramienta que ayuda a desarrollar API's de manera rápida basada en Python. Se usó una imagen de Python en su versión 3.9 en docker. A continuación se describirá el proceso de desarrollo de la API usando estas herramientas.
 
-\subsubsection{Preparando API}
+\subsubsection{Preparando entorno de desarrollo}
 Para tener un control de los paquetes que vamos a usar, se ha elegido la herramienta Poetry, la cual nos ayuda a ordenar los paquetes a usar y que facilita la instalación de estos mismos en cualquier entorno en donde se despliegue el contenedor del sistema.
 
 Primero crearemos nuestro proyecto usando Poetry para ir instalando las dependencias que se requieren para que la API funcione correctamente. Las dependencias son: 
@@ -88,6 +120,96 @@ Los dependencias destacadas son:
 
 Poetry ofrece la opción de crear un entorno virtual en Python, pero como se ha configurado una imagen de Python para el desarrollo del sistema, no es necesario crear un entorno virtual para la instalación de los paquetes vistos anteriormente.
 
+\subsubsection{Estructura de la API}
+Continuemos con la estructura de la API, en esta sección se describirá las carpetas y que es lo que almacenan. En la carpeta backend se localiza el archivo de configuración de docker, con el cual se configura el entorno del contenedor y ejecutar algunos scripts. 
+
+\textbf{Nivel 1 y 2}
+
+En la carpeta \textit{app} que se muestra en la figura \ref{graphic:carpetasapi1} hay mas carpetas, que se visualizan en la figura \ref{graphic:carpetasapi2}. Adentro se localizan la carpeta \textit{alembic}: en esta carpeta se encuentra la herramienta que actúa como versionador de bases de datos; en la carpeta scripts hay archivos que corrigen el formato de los archivos python así como realizar test básicos del sistema; lo siguiente por explicar son los archivos que se encuentran en la raíz de \textit{app}, los cuáles son archivos de configuración para la base de datos y la lista de paquetes administrada por poetry para el entorno de trabajo; por último se encuentra otra carpeta igualmente \textit{app}, en ella se encuentran los archivos de python que conforman el sistema.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=1]{TT/img/implementacion/carpeta-api-1.png}
+    \caption{Carpetas de la API - Parte 1}
+    \label{graphic:carpetasapi1}    
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=1]{TT/img/implementacion/carpeta-api-2.png}
+    \caption{Carpetas de la API - Parte 2}
+    \label{graphic:carpetasapi2}    
+\end{figure}
+
+\textbf{Nivel 3}
+
+Continua la explicación de la carpeta \textit{app}, esta carpeta contiene los archivos del proyecto, se muestran en la figura \ref{graphic:carpetasapi3}. Iniciamos con la carpeta models, en esta carpeta se encuentran los archivos donde se han definido los modelos de la base de datos, cada tabla de la base de datos se define como una clase y dentro de cada clase se definen los atributos de las tablas, sus relaciones, tipos de atributos y características como que sea nulo, único, sea llave primaria o llave foránea, etc. Esto se muestra en la figura \ref{graphic:user_model}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.9]{TT/img/implementacion/carpeta-api-3.png}
+    \caption{Carpetas de la API - Parte 3}
+    \label{graphic:carpetasapi3}    
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.15]{TT/img/implementacion/user-model.png}
+    \caption{Modelo de usuario}
+    \label{graphic:user_model}    
+\end{figure}
+
+Continuamos con la carpeta \textit{schemas}, dentro de esta carpeta tendremos los esquemas de los modelos de la base de datos, estos archivos nos ayudan a tener una estructura sobre los datos que son los accesibles por el usuario y cuales son los que el sistema creará de manera automática, así como el tipo de dato que van a aceptar, esto nos ayuda a que solo entren los tipos de datos que son requeridos por la base de datos lo que añade una capa de seguridad, ya que si se envían datos que no están definidos en las clases simplemente no se podrá guardar o modificar los datos guardados en la base de datos. También se define que datos son los que van a ser creados y actualizados, en la figura \ref{graphic:user_schema} donde se muestra el esquema para la tabla usuario.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.15]{TT/img/implementacion/schema-user.png}
+    \caption{Esquema de usuario}
+    \label{graphic:user_schema}    
+\end{figure}
+
+La siguiente carpeta a presentar es \textit{crud}, en esta carpeta se encuentra el CRUD de cada tabla de la base de datos, se define un CRUD base, donde se definen las funciones básicas de crear, leer, actualizar y eliminar un elemento de la base de datos. Para complementar las funciones básicas, se han creado archivos para cada tabla en la base de datos, ya que se han requerido otras funciones, por ende, estos archivos heredan las funciones básicas ya mencionadas anteriormente, algunos ejemplos son los que se encuentran en el CRUD de usuario que se muestran en la figura \ref{graphic:user_crud} donde se aprecian funciones para buscar usuarios mediante el correo electrónico, autenticar un usuario u obtener si el usuario se encuentra activo o es un súper-usuario.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.10]{TT/img/implementacion/crud_user.png}
+    \caption{CRUD de usuario}
+    \label{graphic:user_crud}    
+\end{figure}
+
+Una de las carpetas esenciales es la llamada \textit{db}, en esta se encuentra la conexión con la base de datos y los archivos que gestiona el arranque de la base de datos, la conexión con el sistema gestor de la base de datos, en este caso postgres, los modelos que se usarán para la base de datos y que alembic y sqlalchemy necesitan para crear y modificar la base de datos en postgres, así como la creación del primer súper-usuario si se ejecuta el contenedor por primera vez.
+
+Por otro lado, tenemos a la carpeta \textit{core}, aquí es donde se encuentran los archivos que se encargan de la seguridad y la configuración del servidor que se ejecutará en el contenedor, algunas de las funciones que se pueden encontrar en estos archivos son: la dirección que sigue del dominio para acceder a los endpoints de la API, el algoritmo de encriptación que en este caso es \textbf{HS256}, la llave de encriptación que es hexadecimal de 32 bits, la duración del token, verificar contraseñas o crear tokens, etc.
+
+A continuación se describe la carpeta \textit{api}, dentro de esta carpeta se localizan los endpoints de la API y funciones importantes como se aprecia en la figura \ref{graphic:deps}, en donde se aprecia las funciones para obtener estados del usuario que son necesarios para validar las peticiones que se harán a la base de datos. En los archivos que se pueden encontrar dentro de esta carpeta, están los responsables de realizar las peticiones HTTP a la base de datos \textit{(Get, Put, Post, Delete)}. En las figuras \ref{graphic:user_endpoint_1} y \ref{graphic:user_endpoint_2} se detallan todas las funciones para las peticiones HTTP que corresponden al usuario, también se pueden definir los estados de error en caso de que la petición que se realice falle.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.10]{TT/img/implementacion/deps.png}
+    \caption{Funciones para obtener estados del usuario}
+    \label{graphic:deps}    
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.10]{TT/img/implementacion/user_endpoint_1.png}
+    \caption{Funciones para realizar peticiones de la API - Parte 1}
+    \label{graphic:user_endpoint_1}    
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.10]{TT/img/implementacion/user_endpoint_2.png}
+    \caption{Funciones para realizar peticiones de la API - Parte 2}
+    \label{graphic:user_endpoint_2}    
+\end{figure}
+
+Para finalizar esta sección se describirán las carpetas y archivos faltantes. Primero, describimos la carpeta \textit{email-templates}, en esta carpeta se encuentran los archivos que tienen el diseño para enviar correos electrónicos para la creación de cuenta nueva, restablecer la contraseña y un template de prueba. En segundo lugar, la carpeta \textit{tests} almacena los archivos para realizar pruebas de funcionamiento a la API. Por último, pero no menos importante, los archivos que están en app, la mayoría de estos han sido creados para poder ejecutar la API en la imagen del contenedor de python, así como inicializar las pruebas a la API y archivos que tienen funciones variadas para las pruebas o para realizar cálculos que son necesarios para las predicciones del sistema.
+
+\clearpage
+
+\subsubsection{Documentación de FastApi}
+Una de las ventajas por las que se ha elegido desarrollar basándose en Python con ayuda del Framework FastApi, es que al momento de ir desarrollando los endpoint de la API se genera de manera automática la documentación de todos estos, teniendo como resultado dos versiones de paginas web que se pueden consultar al momento de inicializar el contenedor, en la figura \ref{}
 
 \subsection{VueJS}
 Para consumir la API usando una interfaz de usuario, se ha elegido usar el framework VueJS de JavaScript por su sencillez.
