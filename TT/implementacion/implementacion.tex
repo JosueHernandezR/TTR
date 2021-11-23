@@ -207,10 +207,64 @@ A continuación se describe la carpeta \textit{api}, dentro de esta carpeta se l
 Para finalizar esta sección se describirán las carpetas y archivos faltantes. Primero, describimos la carpeta \textit{email-templates}, en esta carpeta se encuentran los archivos que tienen el diseño para enviar correos electrónicos para la creación de cuenta nueva, restablecer la contraseña y un template de prueba. En segundo lugar, la carpeta \textit{tests} almacena los archivos para realizar pruebas de funcionamiento a la API. Por último, pero no menos importante, los archivos que están en app, la mayoría de estos han sido creados para poder ejecutar la API en la imagen del contenedor de python, así como inicializar las pruebas a la API y archivos que tienen funciones variadas para las pruebas o para realizar cálculos que son necesarios para las predicciones del sistema.
 
 \clearpage
+\subsubsection{Oauth2}
+En las secciones anteriores se ha hablado un poco de la seguridad del sistema con el uso de token y la generación de una llave del sistema basada en el algoritmo HS256, con ello podemos abordar el manejo del acceso a los endpoints del sistema, para esto se ha usado un protocolo de autorización que viene integrado en FastApi, hablamos del protocolo de autorización OAuth2. Este es un estándar abierto para las API's consiste en compartir información entre sitios sin tener que compartir la identidad.
 
-\subsubsection{Documentación de FastApi}
-Una de las ventajas por las que se ha elegido desarrollar basándose en Python con ayuda del Framework FastApi, es que al momento de ir desarrollando los endpoint de la API se genera de manera automática la documentación de todos estos, teniendo como resultado dos versiones de paginas web que se pueden consultar al momento de inicializar el contenedor, en la figura \ref{}
+Oauth surge para paliar la necesidad que se establece del envío continuo de credenciales entre cliente y servidor. También facilita la integración de terceros como Facebook, Google O Twitter, con esto no es necesario almacenar las credenciales de esas aplicaciones, con ello se pueden realizar las acciones que desee a su nombre.
 
+En el sistema, Oauth2 se ha usado para blindar algunos endpoints, esto se refiere a que no va a ser posible acceder a esos recursos sin antes haber iniciado sesión y tener un token válido. Como el sistema va a ser consumido por una aplicación web, este se define como cliente público el cual no puede mantener contraseñas a salvo, por ende, para realizar la autenticación se ha usado el tipo de otorgamiento que consiste en que el usuario ingrese sus credenciales (correo y contraseña) para la obtención del token de acceso, recordando que este tiene un tiempo de expiración, dando como resultado el acceso a los recursos que estaban bloqueados.
+
+\subsubsection{Documentación de FastApi - 'docs'}
+Una de las ventajas por las que se ha elegido desarrollar basándose en Python con ayuda del Framework FastApi, es que al momento de ir desarrollando los endpoint de la API se genera de manera automática la documentación de todos estos, teniendo como resultado dos versiones de paginas web que se pueden consultar al momento de inicializar el contenedor, en esta sección mostraremos la documentación con la cual se pueden hacer pruebas, esta enfocada en la realización de pruebas manualmente, en la figura \ref{graphic:docs1} se puede apreciar la documentación generada por fastapi. En esa página web aparecerán todos los endpoints que se ha desarrollado para el sistema y al final, los esquemas que se han creado para realizar las peticiones necesarias del sistema. Un detalle a destacar es el icono del candado, aquellos endpoints que requieran una autorización del sistema, tendrán un icono de un candado en color gris, esto es porque no se tiene la autorización necesaria y será necesario iniciar sesión.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.20]{TT/img/implementacion/docs_1.png}
+    \caption{Documentación 'docs' - Parte 1}
+    \label{graphic:docs1}    
+\end{figure}
+
+Como se ha descrito anteriormente, esta versión de la documentación permite realizar pruebas, por lo tanto, para tener acceso a los endpoint que estan bloqueados, procedemos a iniciar sesión, en la imagen \ref{graphic:docs1} se puede observar un botón llamado Authorize, al darle clic nos mostrará un aviso como se puede apreciar en la imagen \ref{graphic:docs2} en donde nos pide algunos datos, los únicos que se van a requerir para acceder al sistema, ya sea con el uso de esta documentación o en cualquier aplicación que la consuma, es requerido ingresar el "username" que es el correo electrónico y la contraseña. Al ingresarlos y que sean correctos, nos sale otro aviso de que ha sido aprobada nuestra autorización  como se aprecia en la imagen \ref{graphic:docs3} y se nos otorga un token, el cual nos dará acceso a los endpoints del sistema y nos permite realizar las peticiones que estén disponibles.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.20]{TT/img/implementacion/docs_2.png}
+    \caption{Documentación 'docs' - Parte 2}
+    \label{graphic:docs2}    
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.30]{TT/img/implementacion/docs_3.png}
+    \caption{Documentación 'docs' - Parte 3}
+    \label{graphic:docs3}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.10]{TT/img/implementacion/docs_4.png}
+    \caption{Documentación 'docs' - Parte 4}
+    \label{graphic:docs4}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.10]{TT/img/implementacion/docs_5.png}
+    \caption{Documentación 'docs' - Parte 5}
+    \label{graphic:docs5}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.10]{TT/img/implementacion/docs_6.png}
+    \caption{Documentación 'docs' - Parte 6}
+    \label{graphic:docs6}
+\end{figure}
+
+\subsubsection{Documentación de FastApi - 'redoc'}
 \subsection{VueJS}
 Para consumir la API usando una interfaz de usuario, se ha elegido usar el framework VueJS de JavaScript por su sencillez.
+\subsubsection{Estructura del Frontend}
+\subsubsection{Typescript}
+\subsubsection{Interfaz de usuario}
 
