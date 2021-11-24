@@ -240,28 +240,66 @@ Como se ha descrito anteriormente, esta versión de la documentación permite re
     \label{graphic:docs3}
 \end{figure}
 
+Teniendo el token de acceso, podemos realizar pruebas en los endpoints blindados, pero sin el, también podemos probar endpoints pero solo los que no están blindados. En la figura \ref{graphic:docs4} se muestra la interfaz del endpoint, al seleccionarlo nos muestra que datos hay que enviar y como va a devolver la respuesta la API, un código 200 significa que la petición ha sido cumplida y nos devuelve lo que hemos creado o pedido, un error 422 es un error de validación, ya sea porque se mandó algo mal o que no respeta el tipo de dato que se requiere y un error 402 es porque no tenemos autorización a ese recurso.
+
 \begin{figure}[!htb]
     \centering
-    \includegraphics[scale=.10]{TT/img/implementacion/docs_4.png}
+    \includegraphics[scale=.20]{TT/img/implementacion/docs_4.png}
     \caption{Documentación 'docs' - Parte 4}
     \label{graphic:docs4}
 \end{figure}
 
+Como se mencionó en el parrafo anterior, se pueden realizar pruebas a la API desde esta página, lo que nos evita usar software de terceros para realizarlas tal como lo es por ejemplo Postman, para acceder a ello le damos clic al boton 'Try it out' nos habilitará una sección para mandar un JSON en el caso de realizar un POST a la API, un ID para la consulta o la eliminación de un objeto en la base de datos, en el caso de la imagen \ref{graphic:docs5} se presenta el caso para crear un usuario, por lo tanto se habilitarán los campos en formato JSON y el tipo de dato que este tiene que tener, se tiene que respetar el nombre del campo y se modifican los campos que se desea cambiar y  con ello, le damos clic al botón 'Execute' para ejecutar la petición y nos regresará el código y resultado correspondiente.
+
 \begin{figure}[!htb]
     \centering
-    \includegraphics[scale=.10]{TT/img/implementacion/docs_5.png}
+    \includegraphics[scale=.20]{TT/img/implementacion/docs_5.png}
     \caption{Documentación 'docs' - Parte 5}
     \label{graphic:docs5}
 \end{figure}
 
+Por último, esta versión de la documentación nos genera la lista de los esquemas usados por la API mostrados en la imagen \ref{graphic:docs6}, estos contienen el nombre del esquema y que es lo que pueden recibir o devuelven en formato JSON de acuerdo al tipo de petición que se realice.
 \begin{figure}[!htb]
     \centering
-    \includegraphics[scale=.10]{TT/img/implementacion/docs_6.png}
+    \includegraphics[scale=.20]{TT/img/implementacion/docs_6.png}
     \caption{Documentación 'docs' - Parte 6}
     \label{graphic:docs6}
 \end{figure}
 
 \subsubsection{Documentación de FastApi - 'redoc'}
+Esta versión esta enfocada en la explicación sobre cada endpoint y los esquemas, en la figura \ref{graphic:redoc1} se puede apreciar la diferencia con la sección anterior. La interfaz de usuario se enfoca mas en informar al usuario la estructura de los endpoint y que datos requiere la API para realizar las peticiones que el usuario desea hacer.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.25]{TT/img/implementacion/redoc_1.png}
+    \caption{Documentación 'redoc' - Parte 1}
+    \label{graphic:redoc1}
+\end{figure}
+
+En la imagen \ref{graphic:redoc2} se muestra la documentación del endpoint para crear usuario, del lado izquierdo estan listados los endpoint y al darle clic al que se desee, en este caso el endpoint de \textit{users} muestra las peticiones que se pueden hacer y el nombre de estas; en la parte central viene el nombre de la petición, describe el tipo de autorización que se requiere para poder usar el endpoint, describe como es el cuerpo el esquema de la petición los nombres de los campos y el tipo de dato que permite y al final viene detallada las respuestas.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.25]{TT/img/implementacion/redoc_2.png}
+    \caption{Documentación 'redoc' - Parte 2}
+    \label{graphic:redoc2}
+\end{figure}
+
+Por último, en la imagen \ref{graphic:redoc3} y \ref{graphic:redoc4} se ve con mas detalle lo que se mostraba en las imágenes \ref{graphic:redoc1} y \ref{graphic:redoc2} del lado izquierdo, en esta sección detalla con mas precisión el endpoint, en la parte de arriba de las imágenes se muestra el tipo de petición y la URL de este mismo y al hacer clic de en el URL, nos desplegará el URL con el dominio en el que este configurado para su acceso mostrándose en la imagen \ref{graphic:redoc4}. En la parte central se muestra como se envían los datos, en todos los casos son 'aplication/json' junto con los campos y un ejemplo de como se deben de llenar para realizar la petición. Al final,
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.40]{TT/img/implementacion/redoc_3.png}
+    \caption{Documentación 'redoc' - Parte 3}
+    \label{graphic:redoc3}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=.40]{TT/img/implementacion/redoc_4.png}
+    \caption{Documentación 'redoc' - Parte 4}
+    \label{graphic:redoc4}
+\end{figure}
+
 \subsection{VueJS}
 Para consumir la API usando una interfaz de usuario, se ha elegido usar el framework VueJS de JavaScript por su sencillez.
 \subsubsection{Estructura del Frontend}
