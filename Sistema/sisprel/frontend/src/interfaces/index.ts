@@ -4,7 +4,7 @@ export interface IUserProfile {
     is_superuser: boolean;
     first_name: string;
     last_name: string;
-    gender: string
+    gender: string;
     id: number;
 }
 

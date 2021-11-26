@@ -8,7 +8,6 @@ from sqlalchemy.orm import relationship
 from app.db.base_class import Base
 
 if TYPE_CHECKING:
-    from .item import Item  # noqa: F401
     from .survey import Survey  # noqa: F401
     from .answer import Answer  # noqa: F401
 
@@ -28,6 +27,5 @@ class User(Base):
         default=datetime.utcnow(),
         onupdate=datetime.utcnow(),
     )
-    items = relationship("Item", back_populates="owner")
     surveys = relationship("Survey", back_populates="users")
     answers = relationship("Answer", back_populates="users")

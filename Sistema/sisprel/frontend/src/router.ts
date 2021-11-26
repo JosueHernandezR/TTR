@@ -86,6 +86,28 @@ export default new Router({
                 },
               ],
             },
+            {
+              path: 'survey',
+              component: RouterComponent,
+              redirect: 'survey/all',
+              children: [
+                {
+                  path: 'create',
+                  name: 'main-survey-create',
+                  component: () => import(
+                    /*webpackChunkName: "main-survey-create" */ './views/main/surveys/CreateSurvey.vue'
+                  ),
+                },
+                {
+                  path:'all',
+                  name: 'main-survey-all',
+                  component: () => import (
+                    /*webpackChunkName: "main-survey-all" */ './views/main/surveys/Surveys.vue'
+                  ),
+                },
+                
+              ]
+            }
           ],
         },
       ],

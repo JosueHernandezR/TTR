@@ -12,6 +12,7 @@ def create_question(
         *,
         db: Session = Depends(deps.get_db),
         question_in: schemas.QuestionCreate,
+        current_user: models.User = Depends(deps.get_current_active_user),
         survey_id: int,
     ) -> Any:
     question = crud.question.create_question(db=db, question=question_in, survey_id=survey_id)
@@ -22,6 +23,7 @@ def read_question(
         *,
         db: Session = Depends(deps.get_db),
         id: int,
+        current_user: models.User = Depends(deps.get_current_active_user),
     ) -> Any:
     """
     Get question by ID.
@@ -38,6 +40,7 @@ def update_question(
         db: Session = Depends(deps.get_db),
         id: int,
         question_in: schemas.QuestionUpdate,
+        current_user: models.User = Depends(deps.get_current_active_user),
     ) -> Any:
     """
     Update a question.
@@ -54,6 +57,7 @@ def delete_question(
         *,
         db: Session = Depends(deps.get_db),
         id: int,
+        current_user: models.User = Depends(deps.get_current_active_user),
     ) -> Any:
     """
     Delete a question.

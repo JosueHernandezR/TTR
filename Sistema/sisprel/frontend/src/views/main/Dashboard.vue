@@ -28,8 +28,7 @@ export default class Dashboard extends Vue {
     if (userProfile) {
       if (userProfile.first_name) {
         return userProfile.first_name;
-      } 
-      else {
+      } else {
         return userProfile.email;
       }
     }

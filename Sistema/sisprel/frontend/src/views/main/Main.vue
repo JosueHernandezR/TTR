@@ -3,49 +3,69 @@
     <v-navigation-drawer persistent :mini-variant="miniDrawer" v-model="showDrawer" fixed app>
       <v-layout column fill-height>
         <v-list>
-          <v-subheader>Main menu</v-subheader>
-          <v-list-tile to="/main/dashboard">
+          <v-subheader>Menú princiapl</v-subheader>
+            <v-list-tile to="/main/dashboard">
+              <v-list-tile-action>
+                <v-icon>web</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>Dashboard</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile to="/main/profile/view">
+              <v-list-tile-action>
+                <v-icon>person</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>Perfil</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile to="/main/profile/edit">
+              <v-list-tile-action>
+                <v-icon>edit</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>Editar perfil</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile to="/main/profile/password">
+              <v-list-tile-action>
+                <v-icon>vpn_key</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>Cambiar contraseña</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+        </v-list>
+        <v-divider></v-divider>
+        <v-list>
+          <v-subheader>Encuestas</v-subheader>
+          <v-list-tile to="/main/survey/create">
             <v-list-tile-action>
-              <v-icon>web</v-icon>
+              <v-icon>add</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Dashboard</v-list-tile-title>
+              <v-list-tile-title>Crear encuesta</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-list-tile to="/main/profile/view">
+          <v-list-tile>
             <v-list-tile-action>
-              <v-icon>person</v-icon>
+              <v-icon>visibility</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Profile</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-          <v-list-tile to="/main/profile/edit">
-            <v-list-tile-action>
-              <v-icon>edit</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>Edit Profile</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-          <v-list-tile to="/main/profile/password">
-            <v-list-tile-action>
-              <v-icon>vpn_key</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>Change Password</v-list-tile-title>
+              <v-list-tile-title>Ver encuestas</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
         <v-divider></v-divider>
         <v-list subheader v-show="hasAdminAccess">
-          <v-subheader>Admin</v-subheader>
+          <v-subheader>Administración</v-subheader>
           <v-list-tile to="/main/admin/users/all">
             <v-list-tile-action>
               <v-icon>group</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Manage Users</v-list-tile-title>
+              <v-list-tile-title>Manejo de usuarios</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
           <v-list-tile to="/main/admin/users/create">
@@ -53,7 +73,7 @@
               <v-icon>person_add</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Create User</v-list-tile-title>
+              <v-list-tile-title>Crear usuarios</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -64,7 +84,7 @@
               <v-icon>close</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Logout</v-list-tile-title>
+              <v-list-tile-title>Cerrar sesión</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
           <v-divider></v-divider>
@@ -73,7 +93,7 @@
               <v-icon v-html="miniDrawer ? 'chevron_right' : 'chevron_left'"></v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Collapse</v-list-tile-title>
+              <v-list-tile-title>Minimizar</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -90,7 +110,7 @@
         <v-list>
           <v-list-tile to="/main/profile">
             <v-list-tile-content>
-              <v-list-tile-title>Profile</v-list-tile-title>
+              <v-list-tile-title>Perfil</v-list-tile-title>
             </v-list-tile-content>
             <v-list-tile-action>
               <v-icon>person</v-icon>
@@ -98,7 +118,7 @@
           </v-list-tile>
           <v-list-tile @click="logout">
             <v-list-tile-content>
-              <v-list-tile-title>Logout</v-list-tile-title>
+              <v-list-tile-title>Cerrar sesión</v-list-tile-title>
             </v-list-tile-content>
             <v-list-tile-action>
               <v-icon>close</v-icon>

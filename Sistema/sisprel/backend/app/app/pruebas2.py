@@ -99,7 +99,7 @@ class Ecuaciones:
                                 self.pcr = i
                                 break
             else:
-                if (r % 2) != 0:  # Par
+                if (r % 2) != 0:  # Impar
                     self.pcr = 0.50
 
     def set_resultados_ecuacion_general(self, n: int, pn: float, r: int) -> None:  # Ecuacion 6 Grupo de votacion de tamaño r
