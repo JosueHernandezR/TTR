@@ -835,4 +835,4 @@ That will use the file `cookiecutter-config-file.yml` in the current directory (
 
 ## Access postgres container
 docker exec -it <container_id/container_name> psql -U <user_name> <database_name>
- 
+psql -U postgres app
