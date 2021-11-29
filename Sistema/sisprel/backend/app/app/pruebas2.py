@@ -70,15 +70,15 @@ class Ecuaciones:
         resta: float = -1.0
         resta2: float = 0.0
 
-        if r == 2:
+        if (r == 2):
             self.pcr = 1.0
         else:   
-            if (r % 2) == 0:  # Par
+            if ((r % 2) == 0):  # Par
                 for iaux in np.arange(iaux, 100):
                     i = iaux / 100.0
                     pr = 0.0
                     praux = 0.0
-                    m = (r / 2) + 1
+                    m = (r / 2) + 1/2
                     l = m
 
                     for l in np.arange(l, r):
@@ -87,11 +87,11 @@ class Ecuaciones:
                     for l in np.arange(l, r):
                         praux += self.evalua_ecuacion_general(r, l, pr)
                     
-                    if ((pr - praux) > 0) or ((pr - praux) < 0) and primera == 1:
+                    if (((pr - praux) > 0) or ((pr - praux) < 0) and primera == 1):
                         primera = 0
                         resta = pr - praux
                     else:
-                        if ((pr - praux) > 0) or ((pr - praux) < 0) and (primera == 0):
+                        if (((pr - praux) > 0) or ((pr - praux) < 0) and (primera == 0)):
                             resta2 = pr - praux
                             if ((resta > 0) and (resta2 < 0)) or (
                                 (resta < 0) and (resta2 > 0)
@@ -99,7 +99,7 @@ class Ecuaciones:
                                 self.pcr = i
                                 break
             else:
-                if (r % 2) != 0:  # Impar
+                if ((r % 2) != 0):  # Impar
                     self.pcr = 0.50
 
     def set_resultados_ecuacion_general(self, n: int, pn: float, r: int) -> None:  # Ecuacion 6 Grupo de votacion de tamaño r
@@ -169,7 +169,7 @@ class Ecuaciones:
 
 
 r = 4
-p0 = 69
+p0 = 45.99
 n =3
 m = (r / 2) + 1
 l = m

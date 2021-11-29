@@ -88,7 +88,7 @@ class Ecuaciones:
                     i = iaux / 100.0
                     pr = 0.0
                     praux = 0.0
-                    m = (r / 2) + 1
+                    m = (r / 2) + 1/2
                     l = m
 
                     for l in np.arange(l, r):
@@ -175,3 +175,4 @@ class Ecuaciones:
     
     def get_resultados_ecuacion_general(self):
         return self.resultados
+
