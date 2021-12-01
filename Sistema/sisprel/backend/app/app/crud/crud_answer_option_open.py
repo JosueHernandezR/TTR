@@ -49,4 +49,16 @@ class CRUDAnswerOptionOpen(
             .all()
         )
 
+    def get_multi_by_survey_and_respondent(
+        self, db: Session, *, option_question_survey_id:int,
+        respondent_id: int, skip: int = 0, limit: int =100
+    ) -> List[Answer_Option_Open]:
+        return(
+            db.query(self.model)
+            .filter(option_question_survey_id == option_question_survey_id and respondent_id == respondent_id)
+            .offset(skip)
+            .limit(limit)
+            .all()
+        )
+
 answer_option_open = CRUDAnswerOptionOpen(Answer_Option_Open)

@@ -225,15 +225,15 @@ print("PCR", Ecuaciones.get_pcr())
 Ecuaciones.set_lamdar(pcr, r)
 lambdar = Ecuaciones.get_lambdar()
 print("Lambdar",Ecuaciones.get_lambdar())
-
+lambdar1 = 1.166
 # PNDR / PNFR 1
-Ecuaciones.set_pndr(lambdar=lambdar, pcr=pcr, n=n1)
+Ecuaciones.set_pndr(lambdar=lambdar1, pcr=pcr, n=5)
 pndr = Ecuaciones.get_pndr()
-print(pndr)
+print("PNDR: ",pndr)
 
-Ecuaciones.set_pnfr(pndr=pndr, lamdar=lambdar, n=n1)
+Ecuaciones.set_pnfr(pndr=pndr, lamdar=lambdar1, n=5)
 pnfr = Ecuaciones.get_pnfr()
-print(pnfr)
+print("PNFR: ",pnfr)
 
 # var = 0.0
 # for l in np.arange(l, r):

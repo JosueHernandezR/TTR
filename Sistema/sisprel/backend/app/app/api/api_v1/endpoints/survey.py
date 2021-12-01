@@ -18,7 +18,7 @@ def create_survey(
     return survey
 
 @router.get("/all", response_model=List[schemas.Survey])
-def read_surveys(
+def read_all_surveys(
         db: Session = Depends(deps.get_db),
         skip: int = 0,
         limit: int = 100,

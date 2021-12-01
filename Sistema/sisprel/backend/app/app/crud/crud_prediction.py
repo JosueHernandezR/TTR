@@ -1,3 +1,4 @@
+from re import L
 from typing import Optional, Union, List, Dict, Any
 from fastapi.encoders import jsonable_encoder
 
@@ -17,4 +18,15 @@ class CRUDPredictionManual(CRUDBase[Prediction_Manual, PredictionCreate, Predict
         db.refresh(db_obj)
         return db_obj
     
+    def get_multi_by_owner(
+        self, db: Session, *, owner_id: int, skip: int = 0, limit: int = 100,
+    ) -> List[Prediction_Manual]:
+        return(
+            db.query(self.model)
+            .filter(Prediction_Manual.owner_id == owner_id)
+            .offset(skip)
+            .limit(limit)
+            .all()
+        )
+
 prediction_manual = CRUDPredictionManual(Prediction_Manual)
