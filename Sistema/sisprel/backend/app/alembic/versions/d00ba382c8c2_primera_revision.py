@@ -1,8 +1,8 @@
-"""Add predictions_table
+"""Primera revision
 
-Revision ID: 9f1131fadd24
+Revision ID: d00ba382c8c2
 Revises: 
-Create Date: 2021-11-28 09:21:15.552226
+Create Date: 2021-12-05 08:50:43.049864
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9f1131fadd24'
+revision = 'd00ba382c8c2'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -67,12 +67,13 @@ def upgrade():
     sa.Column('accept_open_answer', sa.Boolean(), nullable=False),
     sa.Column('is_mandatory', sa.Boolean(), nullable=False),
     sa.Column('survey_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['survey_id'], ['survey.id'], onupdate='cascade', ondelete='cascade'),
-    sa.PrimaryKeyConstraint('id', 'survey_id')
+    sa.ForeignKeyConstraint(['survey_id'], ['survey.id'], onupdate='CASCADE', ondelete='CASCADE'),
+    sa.PrimaryKeyConstraint('id', 'survey_id'),
+    sa.UniqueConstraint('id', 'survey_id')
     )
     op.create_index(op.f('ix_question_id'), 'question', ['id'], unique=False)
     op.create_index(op.f('ix_question_question'), 'question', ['question'], unique=False)
-    op.create_index(op.f('ix_question_survey_id'), 'question', ['survey_id'], unique=False)
+    op.create_index(op.f('ix_question_survey_id'), 'question', ['survey_id'], unique=True)
     op.create_table('survey_results',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('survey_id', sa.Integer(), nullable=True),
@@ -88,7 +89,7 @@ def upgrade():
     )
     op.create_index(op.f('ix_survey_results_id'), 'survey_results', ['id'], unique=True)
     op.create_table('question_option',
-    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('option_name', sa.String(length=3), nullable=False),
     sa.Column('option', sa.Text(), nullable=False),
     sa.Column('weight', sa.Integer(), nullable=False),
@@ -128,7 +129,7 @@ def upgrade():
     sa.UniqueConstraint('option_question_id'),
     sa.UniqueConstraint('option_question_survey_id'),
     sa.UniqueConstraint('respondent_id'),
-    sa.UniqueConstraint('respondent_id', 'option_id', 'option_question_id', 'option_question_survey_id', name='uc_answer_option')
+    sa.UniqueConstraint('respondent_id', 'option_id', 'option_question_id', 'option_question_survey_id')
     )
     op.create_table('answer_option_open',
     sa.Column('respondent_id', sa.Integer(), nullable=False),

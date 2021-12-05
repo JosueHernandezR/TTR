@@ -2,8 +2,6 @@ from typing import Any, List
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from Sistema.sisprel.backend.app.app.models import survey
-from Sistema.sisprel.backend.app.app.models.results import Survey_Results
 from app import crud, models, schemas
 from app.api import deps
 

@@ -8,3 +8,4 @@ from .survey import Survey, SurveyCreate, SurveyInDB, SurveyUpdate
 from .results import ResultPrediction, ResultPredictionCreate, ResultPredictionInDB, ResultPredictionUpdate
 from .prediction import Prediction, PredictionCreate, PredictionInDB, PredictionUpdate
 from .answer_option_open import AnswerOptionOpen, AnswerOptionOpenCreate, AnswerOptionOpenInDB, AnswerOptionOpenUpdate
+from .answer_option import AnswerOption, AnswerOptionCreate, AnswerOptionInDB, AnswerOptionUpdate

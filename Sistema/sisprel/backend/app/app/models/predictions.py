@@ -19,4 +19,4 @@ class Prediction_Manual(Base):
     porcentaje_derrota = Column(Float, nullable=False)
     porcentaje_aceptacion_final = Column(Float, nullable=False)
 
-    owners = relationship("User", back_populates="predictions_manual")
+    owner = relationship("User", backref='prediction_manual')

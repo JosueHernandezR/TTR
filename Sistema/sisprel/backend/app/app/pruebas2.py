@@ -20,37 +20,37 @@ class Ecuaciones:
             numero -= 1
         return factorial
 
-    def evalua_ecuacion_general(self, r: int, l: int, pn: Decimal) -> Decimal:
+    def evalua_ecuacion_general(self, r: int, l: int, pn: Decimal):
         # a = self.factorial(r)
-        # b = self.factorial(l) * self.factorial(l-r)
+        # b = self.factorial(l) * self.factorial(r-l)
 
         return (
-            ((self.factorial(r))/(self.factorial(l) * self.factorial(r-l))) *
+            ((self.factorial(r))/((self.factorial(l)) * (self.factorial(r-l)))) *
             (math.pow(pn, l)) *
             (math.pow((1-pn), (r-l)))
         )
 
-    def evalua_ecuacion_general_derivada(self, r: int, l: int, pcr: Decimal) -> Decimal:
-        # a = self.factorial(r)
-        # b = self.factorial(l) * self.factorial(r-l)
+    def evalua_ecuacion_general_derivada(self, r: int, l: int, pcr: Decimal):
+        a = self.factorial(r)
+        b = self.factorial(l) * self.factorial(r-l)
         
-        # # v = pcr ** l
-        # v = pow(pcr, l)
+        # c = pcr ** l
+        c = math.pow(pcr, l)
 
-        # d = r-l
-        # # e = (1-pcr) ** (r-l-1)
-        # e = pow((1-pcr), (r-l-1))
-        # f = -1
+        d = r-l
+        # e = (1-pcr) ** (r-l-1)
+        e = math.pow((1-pcr), (r-l-1))
+        f = -1
 
-        # g = (1-pcr) ** (r-l)
-        # h = l
-        # # i = pcr ** (l-1)
-        # i = pow(pcr, l-1)
-        
-        return ( # (a/b) * ((v*d*e*f) + (g*h*i))
-            ((self.factorial(r))/(self.factorial(l) * self.factorial(r-l))) *
-            ((math.pow(pcr, l) * (r-l) * math.pow((1-pcr), (r-l-1)) * (-1)) +
-            (math.pow((1-pcr), (r-l)) * l * math.pow(pcr, (l-1))))
+        g = (1-pcr) ** (r-l)
+        h = l
+        # i = pcr ** (l-1)
+        i = math.pow(pcr, l-1)
+
+        return (  (a/b) * ((c*d*e*f) + (g*h*i))
+            # ((self.factorial(r))/(self.factorial(l) * self.factorial(r-l))) *
+            # ((math.pow(pcr, l) * (r-l) * math.pow((1-pcr), (r-l-1)) * (-1)) +
+            # (math.pow((1-pcr), (r-l)) * l * math.pow(pcr, (l-1))))
         )
 
     def set_lamdar(self, pcr: Decimal, r: int) -> None:
@@ -63,7 +63,7 @@ class Ecuaciones:
             m = (r + 1) / 2
 
         l = m
-        for l in np.arange(l, r):
+        for l in np.arange(l, r+1):
             self.lambdar += self.evalua_ecuacion_general_derivada(r, l, pcr)
 
     def set_pndr(self, lambdar: Decimal, pcr: Decimal, n: int) -> None:
@@ -112,17 +112,17 @@ class Ecuaciones:
                     return "No hay calculos para estos valores" 
 
                 # Este código no funciona
-                # for iaux in np.arange(iaux, 100):
+                # for iaux in np.arange(iaux, 100 + 1):
                 #     i = iaux / 100.0
                 #     pr = 0.0
                 #     praux = 0.0
                 #     m = (r / 2) + 1
                 #     l = m
 
-                #     for l in np.arange(l, r):
+                #     for l in np.arange(l, r +1):
                 #         pr += self.evalua_ecuacion_general(r=r, l=l, pn=i)
 
-                #     for l in np.arange(l, r):
+                #     for l in np.arange(l, r +1 ):
                 #         praux += self.evalua_ecuacion_general(r, l, pr)
                     
                 #     if (((pr - praux) > 0) or ((pr - praux) < 0) and primera == 1):
@@ -158,7 +158,7 @@ class Ecuaciones:
             self.n = 0
             while pn > 0.01:
                 try:
-                    for l in np.arange(l, r):
+                    for l in np.arange(l, r + 1):
                         pr += self.evalua_ecuacion_general(r, l, pn)
 
                     lista_resultados.append(str(pr))
@@ -181,9 +181,10 @@ class Ecuaciones:
             self.resultados = [0] * self.n
             for i in np.arange(0, n):
                 try:
-                    for j in np.arange(l, r):
+                    for j in np.arange(l, r + 1):
                         pr += self.evalua_ecuacion_general(r, j, pn)
-                    self.resultados[i] =  pr
+                    #self.resultados[i] =  pr
+                    self.resultados.append(pr)
                     pn = pr
                     pr = 0
                 except:
@@ -214,7 +215,7 @@ n = 4 -> pndr = 66.2619; pnfr = 80.2075
 n = 5 -> pndr = 70.439 ; pnfr = 78.9601
 """
 r = 4
-p0 = 45.99
+p0 = 45.99/100
 n1 = 3; n2 = 4; n3 = 5;
 l = (r/2) + 1
 # PCR
@@ -225,23 +226,28 @@ print("PCR", Ecuaciones.get_pcr())
 Ecuaciones.set_lamdar(pcr, r)
 lambdar = Ecuaciones.get_lambdar()
 print("Lambdar",Ecuaciones.get_lambdar())
-lambdar1 = 1.166
+lambdar1 = 1.64
 # PNDR / PNFR 1
-Ecuaciones.set_pndr(lambdar=lambdar1, pcr=pcr, n=5)
+Ecuaciones.set_pndr(lambdar=lambdar, pcr=pcr, n=1)
 pndr = Ecuaciones.get_pndr()
 print("PNDR: ",pndr)
 
-Ecuaciones.set_pnfr(pndr=pndr, lamdar=lambdar1, n=5)
+Ecuaciones.set_pnfr(pndr=pndr, lamdar=lambdar, n=1)
 pnfr = Ecuaciones.get_pnfr()
 print("PNFR: ",pnfr)
 
+#Resultados n
+Ecuaciones.set_resultados_ecuacion_general(n=1,pn=p0, r=r)
+ecuacion_general = Ecuaciones.get_resultados_ecuacion_general()
+print(ecuacion_general)
+
 # var = 0.0
-# for l in np.arange(l, r):
-#     a = math.factorial(r)
-#     b = math.factorial(l) * math.factorial(r-l)
+# for l in np.arange(l, r,1):
+#     a = Ecuaciones.factorial(r)
+#     b = Ecuaciones.factorial(l) * Ecuaciones.factorial(r-l)
     
 #     # v = pcr ** l
-#     v = pow(pcr, l)
+#     c = pow(pcr, l)
 
 #     d = r-l
 #     # e = (1-pcr) ** (r-l-1)
@@ -252,11 +258,30 @@ print("PNFR: ",pnfr)
 #     h = l
 #         # i = pcr ** (l-1)
 #     i = pow(pcr, l-1)
-#     var = var + (a/b) * ((v*d*e*f) + (g*h*i))
+#     var = var + (a/b) * ((c*d*e*f) + (g*h*i))
+#     print(a)
+#     print(b)
+#     print(c)
+#     print(d)
+#     print(e)
+#     print(f)
+#     print(g)
+#     print(h)
+#     print(i)
 #     #var = var + Ecuaciones.evalua_ecuacion_general_derivada(r=r, l=l, pcr=pcr)
+
+# print(a)
+# print(b)
+# print(c)
+# print(d)
+# print(e)
+# print(f)
+# print(g)
+# print(h)
+# print(i)
 
 # print(var)
 # #print(Ecuaciones.evalua_ecuacion_general_derivada(r=r, l=l, pcr=pcr))
-# print(Ecuaciones.factorial(numero=4))
-
-
+# print(Ecuaciones.factorial(numero=r))
+# print(Ecuaciones.factorial(numero=l))
+# print(Ecuaciones.factorial(numero=r-l))
