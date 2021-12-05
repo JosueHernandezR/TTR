@@ -11,7 +11,7 @@ router = APIRouter()
 def createPrediction(
     *,
     db: Session = Depends(deps.get_db),
-    prediction_in = schemas.PredictionCreate,
+    prediction_in: schemas.PredictionCreate,
     current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     prediction = crud.prediction_manual.createPredictionManual(

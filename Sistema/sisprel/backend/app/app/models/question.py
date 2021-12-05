@@ -19,24 +19,5 @@ class Question(Base):
     accept_open_answer = Column(Boolean(), nullable=False)
     is_mandatory = Column(Boolean(), default=True, nullable=False)
     
-    survey_id = Column(Integer, ForeignKey("survey.id", onupdate="CASCADE", ondelete="CASCADE"),primary_key=True, unique=True, index=True)
+    survey_id = Column(Integer, ForeignKey("survey.id", onupdate="CASCADE", ondelete="CASCADE"), unique=True, index=True)
 
-    survey = relationship(
-        "Survey", 
-        foreign_keys='Question.survey_id',
-        backref= 'question',
-        primaryjoin="and_(Question.id == Question_option.question_id, Question.survey_id == Question_option.question_survey_id)",
-
-    )
-
-    __table_args__ = (
-        UniqueConstraint("id", "survey_id",),
-        PrimaryKeyConstraint("id", "survey_id",),
-    )
-    # Relacion 1 a muchos
-    #question_options = relationship("Question_option", back_populates="questions")
-    # Relacion 1 a 1
-    question_option_open =relationship("Question_option_open", back_populates="questions", uselist=False)
-    #__table_args__ = (UniqueConstraint("id", "survey_id", name="uq_question_survey_unique_code"),)
-    # Relacion muchos a 1
-    #surveys = relationship("Survey", back_populates="questions")

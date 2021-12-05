@@ -1,8 +1,8 @@
-"""tecera revision
+"""Primera vesion estable
 
-Revision ID: 0d8763b22790
-Revises: 6046d4bcd198
-Create Date: 2021-12-05 08:53:46.591849
+Revision ID: 03ae695d6b94
+Revises: 031006e8f61a
+Create Date: 2021-12-05 19:11:08.380322
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '0d8763b22790'
-down_revision = '6046d4bcd198'
+revision = '03ae695d6b94'
+down_revision = '031006e8f61a'
 branch_labels = None
 depends_on = None
 

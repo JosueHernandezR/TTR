@@ -1,4 +1,3 @@
-from re import L
 from typing import Optional, Union, List, Dict, Any
 from fastapi.encoders import jsonable_encoder
 
@@ -11,6 +10,7 @@ class CRUDPredictionManual(CRUDBase[Prediction_Manual, PredictionCreate, Predict
     def createPredictionManual(
         self, db: Session, *, obj_in: PredictionCreate, owner_id: int
     ) -> Prediction_Manual:
+
         obj_in_data = jsonable_encoder(obj_in)
         db_obj = self.model(**obj_in_data, owner_id = owner_id)
         db.add(db_obj)

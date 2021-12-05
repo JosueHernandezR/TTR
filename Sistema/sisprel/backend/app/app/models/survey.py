@@ -20,12 +20,3 @@ class Survey(Base):
     owner_id = Column(Integer, ForeignKey("user.id", onupdate="CASCADE", ondelete="CASCADE"))
 
     owner = relationship("User", backref="survey")
-
-    # Relacion 1 a 1
-    #questions = relationship("Question", back_populates="surveys", )
-    results = relationship("Survey_Results", back_populates="surveys", uselist=False)
-    # Relacion muchos a 1
-    #users = relationship("User", back_populates="surveys")
-    # __mapper_args__ = {
-    #     'polymorphic_identity': 'survey',
-    # }

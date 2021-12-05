@@ -19,12 +19,6 @@ class CRUDSurvey(CRUDBase[Survey, SurveyCreate, SurveyUpdate]):
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)
-        # for question in obj_in.question:
-        #     db_question_option = models.Question(**question, question_id=db_obj.id)
-        #     db.add(db_question_option)
-        #     db.commit()
-        #     # if db_question_option.accept_open_answer == False:
-        #     #     for question_option in 
         return db_obj
 
     def get_multi_by_owner(

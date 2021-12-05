@@ -4,12 +4,12 @@ from pydantic import BaseModel
 
 class PredictionBase(BaseModel):
     title: str
-    porcentaje_aceptacion_inicial: float
-    tamanio_grupo_votantes: int
-    jerarquias_electorales: int
-    porcentaje_victoria: float
-    porcentaje_derrota: float
-    porcentaje_aceptacion_final: float
+    porcentaje_aceptacion_inicial: Optional[float]
+    tamanio_grupo_votantes: Optional[int]
+    jerarquias_electorales: Optional[int]
+    porcentaje_victoria: Optional[float]
+    porcentaje_derrota: Optional[float]
+    porcentaje_aceptacion_final: Optional[float]
 
 class PredictionCreate(PredictionBase):
     pass

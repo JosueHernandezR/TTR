@@ -21,9 +21,4 @@ class Answer_Option_Open(Base):
     answer_text = Column(Text, nullable=False)
     weight_calculated = Column(Integer, nullable=False)
 
-    __table_args__ = (
-        UniqueConstraint("respondent_id", "option_id", "option_question_id", "option_question_survey_id",),
-    )
-
-    respondents = relationship("User", back_populates="answer_options")
-    question_option_open_answer = relationship("Question_option_open", back_populates="answers")
+   

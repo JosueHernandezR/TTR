@@ -13,7 +13,7 @@ class CRUDQuestionOptionOpen(CRUDBase[Question_option_open, QuestionOptionOpenCr
         return db.query(self.model).filter(Question_option_open.id==id).first()
     
     def create_question_option_open(
-            self, db: Session, *, question_option_open: schemas.QuestionOptionOpenCreate, question_id:int, question_survey_id:int
+            self, db: Session, *, question_option_open: QuestionOptionOpenCreate, question_id:int, question_survey_id:int
         ) -> Question_option_open:
         obj_in_data = jsonable_encoder(question_option_open)
         db_obj = self.model(**obj_in_data, question_id = question_id, question_survey_id = question_survey_id)

@@ -11,7 +11,7 @@ router = APIRouter()
 def createAnswerOption(
     *,
     db: Session = Depends(deps.get_db),
-    obj_in = schemas.AnswerOptionCreate,
+    obj_in: schemas.AnswerOptionCreate,
     current_user: models.User = Depends(deps.get_current_active_user),
     option_id: int,
     option_question_id: int,

@@ -11,8 +11,8 @@ router = APIRouter()
 def createSurveyResultPrediction(
     *,
     db: Session = Depends(deps.get_db),
-    prediction_in = schemas.ResultPredictionCreate,
-    survey_id = int,
+    prediction_in: schemas.ResultPredictionCreate,
+    survey_id: int,
     current_user: models.User = Depends(deps.get_current_active_user)
     ) -> Any:
     survey_result_prediction = crud.survey_result.createSurveyResults(

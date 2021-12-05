@@ -28,10 +28,3 @@ class User(Base):
         onupdate=datetime.utcnow(),
     )
     
-    #surveys = relationship("Survey", back_populates="users")
-    
-    #predictions_manual = relationship("Prediction_Manual", back_populates="owners")
-
-    question_option = relationship("Question_option", secondary= "answer_option",backref="user")
-    # Many to Many
-    answer_options_Open = relationship("Answer_Option_Open", back_populates="respondents")
