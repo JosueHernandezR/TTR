@@ -19,6 +19,7 @@ class SurveyInDBBase(SurveyBase):
     title: str
     create_at: datetime
     owner_id: int
+    weight_total: int
     questions: List[schemas.Question] = []
     class Config:
         orm_mode = True

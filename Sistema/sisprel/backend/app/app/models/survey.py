@@ -17,6 +17,7 @@ class Survey(Base):
     description = Column(Text)
     create_at = Column(DateTime, default=datetime.utcnow())
     active_survey = Column(Boolean(), default=True)
+    weight_total = Column(Integer, default=0, nullable=False)
     owner_id = Column(Integer, ForeignKey("user.id", onupdate="CASCADE", ondelete="CASCADE"))
 
     owner = relationship("User", backref="survey")

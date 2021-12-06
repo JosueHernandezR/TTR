@@ -31,5 +31,19 @@ class CRUDSurvey(CRUDBase[Survey, SurveyCreate, SurveyUpdate]):
             .limit(limit)
             .all()
         )
+    
+    def update_weight_survey(
+        self, db: Session, *, 
+        db_obj: Survey, 
+        obj_in: Union[SurveyUpdate, Dict[str, Any]], 
+        weight_total: int
+    ) -> Survey:
+        db_obj.weight_total = weight_total
+        if isinstance(obj_in, dict):
+            update_data = obj_in
+        else:
+            update_data = obj_in.dict(exclude_unset=True)
+        return super().update(db, db_obj=db_obj, obj_in=update_data)
+
 
 survey = CRUDSurvey(Survey)

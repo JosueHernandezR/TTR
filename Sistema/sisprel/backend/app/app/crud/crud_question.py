@@ -1,4 +1,4 @@
-from typing import Dict, Any, Optional, Union
+from typing import Dict, Any, Optional, Union, List
 
 from fastapi.encoders import jsonable_encoder
 from app import crud, models, schemas
@@ -25,6 +25,18 @@ class CRUDQuestion(CRUDBase[Question,QuestionCreate, QuestionUpdate]):
         #     db.add(db_question_option)
         #     db.commit()
         return db_obj
+
+    def get_questions_by_survey(
+        self,
+        db: Session,
+        *,
+        survey_id: int
+    ) ->List[Question]:
+        return(
+            db.query(self.model)
+            .filter(Question.survey_id == survey_id)
+            .all()
+        )
 
 
     # def update_survey(self, db: Session, *, db_obj: Question, obj_in: Union[QuestionUpdate, Dict[str, Any]],) -> Question:

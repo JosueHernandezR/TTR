@@ -51,13 +51,15 @@ def update_survey(
     """
     Update an survey.
     """
+    weight_total = len(crud.question.get_questions_by_survey(db=db, survey_id=id))
     survey = crud.survey.get(db=db, id=id)
     if not survey:
         raise HTTPException(status_code=404, detail="Survey not found")
     if (survey.owner_id != current_user.id):
         raise HTTPException(status_code=400, detail="Not enough permissions")
-    survey = crud.survey.update(db=db, db_obj=survey, obj_in=survey_in)
+    survey = crud.survey.update_weight_survey(db=db, db_obj=survey, obj_in=survey_in, weight_total=weight_total)
     return survey
+
 
 @router.get("/{id}", response_model=schemas.Survey)
 def read_survey(
