@@ -7,9 +7,7 @@ class ResultPredictionBase(BaseModel):
     porcentaje_aceptacion_inicial: float
     tamanio_grupo_votantes: int
     jerarquias_electorales: int
-    porcentaje_victoria: float
-    porcentaje_derrota: float
-    porcentaje_aceptacion_final: float
+    
 
 class ResultPredictionCreate(ResultPredictionBase):
     pass
@@ -20,6 +18,11 @@ class ResultPredictionUpdate(ResultPredictionBase):
 class ResultPredictionInDBBase(ResultPredictionBase):
     id: int
     survey_id: int
+    
+    porcentaje_victoria: float
+    porcentaje_derrota: float
+    porcentaje_aceptacion_final: float
+    iteraciones_para_eliminación: int
 
     class Config:
         orm_mode = True

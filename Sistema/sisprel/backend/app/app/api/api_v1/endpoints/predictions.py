@@ -49,3 +49,19 @@ def read_all_predictions_by_owner(
         limit=limit
     )
     return predictions
+
+@router.delete("/{id}", response_model=schemas.Prediction)
+def delete_prediction(
+    *,
+    db: Session = Depends(deps.get_db),
+    id: int,
+    current_user: models.User = Depends(deps.get_current_active_user),
+    ) -> Any:
+        prediction = crud.prediction_manual.get(db=db, id=id)
+        if not prediction:
+            raise HTTPException(status_code=404, detail="Predicción no encontrada")
+        if (prediction.owner_id != current_user.id):
+            raise HTTPException(status_code=400, detail="No tienes los permisos")
+        
+        prediction = crud.prediction_manual.remove(db=db, id= id)
+        return prediction

@@ -18,3 +18,5 @@ class Survey_Results(Base):
     porcentaje_victoria = Column(Float, nullable=False)
     porcentaje_derrota = Column(Float, nullable=False)
     porcentaje_aceptacion_final = Column(Float, nullable=False)
+    iteraciones_para_eliminación = Column(Integer, nullable=False)
+
