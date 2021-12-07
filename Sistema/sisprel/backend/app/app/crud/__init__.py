@@ -7,7 +7,7 @@ from .crud_answer_option import answer_option
 from .crud_answer_option_open import answer_option_open
 from .crud_prediction import prediction_manual
 from .crud_results import survey_result
-
+from .crud_survey_aceptacion import survey_aceptacion
 # For a new basic set of CRUD operations you could just do
 
 # from .base import CRUDBase

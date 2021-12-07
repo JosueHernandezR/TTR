@@ -34,7 +34,7 @@ def read_question(
     # Desarrollar la funcion de obtener encuesta con el id
     return question
 
-@router.put("{id}", response_model=schemas.Question)
+@router.put("/{id}", response_model=schemas.Question)
 def update_question(
         *,
         db: Session = Depends(deps.get_db),

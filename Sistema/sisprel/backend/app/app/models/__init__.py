@@ -7,3 +7,4 @@ from .results import Survey_Results
 from .answer_option import Answer_Option
 from .answer_option_open import Answer_Option_Open
 from .predictions import Prediction_Manual
+from .survey_aceptacion import Survey_Aceptacion

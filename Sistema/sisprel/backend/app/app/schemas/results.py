@@ -4,7 +4,6 @@ from pydantic import BaseModel
 
 class ResultPredictionBase(BaseModel):
     title: str
-    porcentaje_aceptacion_inicial: float
     tamanio_grupo_votantes: int
     jerarquias_electorales: int
     
@@ -19,6 +18,7 @@ class ResultPredictionInDBBase(ResultPredictionBase):
     id: int
     survey_id: int
     
+    porcentaje_aceptacion_inicial: float
     porcentaje_victoria: float
     porcentaje_derrota: float
     porcentaje_aceptacion_final: float

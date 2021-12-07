@@ -9,3 +9,4 @@ from .results import ResultPrediction, ResultPredictionCreate, ResultPredictionI
 from .prediction import Prediction, PredictionCreate, PredictionInDB, PredictionUpdate
 from .answer_option_open import AnswerOptionOpen, AnswerOptionOpenCreate, AnswerOptionOpenInDB, AnswerOptionOpenUpdate
 from .answer_option import AnswerOption, AnswerOptionCreate, AnswerOptionInDB, AnswerOptionUpdate
+from .survey_aceptacion import SurveyAceptacion, SurveyAceptacionCreate, SurveyAceptacionUpdate

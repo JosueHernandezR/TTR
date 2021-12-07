@@ -1,8 +1,8 @@
-"""Primera vesion estable
+"""Correcion atributo de aceptación
 
-Revision ID: 03ae695d6b94
-Revises: 031006e8f61a
-Create Date: 2021-12-05 19:11:08.380322
+Revision ID: 74a410ceaffa
+Revises: 8927bf9891fe
+Create Date: 2021-12-07 08:27:30.221822
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '03ae695d6b94'
-down_revision = '031006e8f61a'
+revision = '74a410ceaffa'
+down_revision = '8927bf9891fe'
 branch_labels = None
 depends_on = None
 

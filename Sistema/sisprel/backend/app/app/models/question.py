@@ -13,11 +13,21 @@ if TYPE_CHECKING:
     from .survey import Survey  # noqa: F401
 
 class Question(Base):
-    __mapper_args__ = {'polymorphic_identity': 'question'}
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     question = Column(Text,index=True, nullable=False)
     accept_open_answer = Column(Boolean(), nullable=False)
     is_mandatory = Column(Boolean(), default=True, nullable=False)
     
-    survey_id = Column(Integer, ForeignKey("survey.id", onupdate="CASCADE", ondelete="CASCADE"), unique=True, index=True)
+    survey_id = Column(Integer, ForeignKey("survey.id", onupdate="CASCADE", ondelete="CASCADE"))
 
+    # __table_args__ = (
+    #     UniqueConstraint("id", "survey_id"),
+    # )
+    
+     # Relacion 1 a muchos
+    question_options = relationship("Question_option", back_populates="questions")
+
+    # Relacion 1 a 1
+    question_option_open =relationship("Question_option_open", back_populates="questions", uselist=False)
+
+    surveys = relationship("Survey", back_populates="questions")

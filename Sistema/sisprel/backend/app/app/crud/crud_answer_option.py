@@ -1,6 +1,7 @@
 from typing import Optional, Union, List, Dict, Any
 from fastapi.encoders import jsonable_encoder
 from sqlalchemy.orm.session import Session
+from sqlalchemy.sql.functions import sum
 
 from app.crud.base import CRUDBase
 from app.models.answer_option import Answer_Option
@@ -42,7 +43,7 @@ class CRUDAnswerOption(
     ) -> List[Answer_Option]:
         return(
             db.query(self.model)
-            .filter(option_question_survey_id == option_question_survey_id)
+            .filter(Answer_Option.option_question_survey_id == option_question_survey_id)
             .offset(skip)
             .limit(limit)
             .all()
@@ -54,10 +55,20 @@ class CRUDAnswerOption(
     ) -> List[Answer_Option]:
         return(
             db.query(self.model)
-            .filter(option_question_survey_id == option_question_survey_id and respondent_id == respondent_id)
+            .filter(option_question_survey_id == option_question_survey_id, respondent_id == respondent_id)
             .offset(skip)
             .limit(limit)
             .all()
         )
+    
+    def weight_total_by_survey_and_respondent(
+        self, db: Session, *, option_question_survey_id:int,
+        respondent_id: int,
+    ):
+        test_sum = (db.query(sum(self.model.weight_selected))
+            .filter(option_question_survey_id == option_question_survey_id, respondent_id == respondent_id)
+            .all())
+        result = test_sum[0]
+        return(result[0])
     
 answer_option = CRUDAnswerOption(Answer_Option)

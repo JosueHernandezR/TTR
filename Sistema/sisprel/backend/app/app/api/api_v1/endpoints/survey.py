@@ -51,7 +51,7 @@ def update_survey(
     """
     Update an survey.
     """
-    weight_total = len(crud.question.get_questions_by_survey(db=db, survey_id=id))
+    weight_total = len(crud.question.get_questions_by_survey(db=db, survey_id=id)) * 5
     survey = crud.survey.get(db=db, id=id)
     if not survey:
         raise HTTPException(status_code=404, detail="Survey not found")

@@ -55,9 +55,19 @@ class CRUDAnswerOptionOpen(
     ) -> List[Answer_Option_Open]:
         return(
             db.query(self.model)
-            .filter(option_question_survey_id == option_question_survey_id and respondent_id == respondent_id)
+            .filter(option_question_survey_id == option_question_survey_id,respondent_id == respondent_id)
             .offset(skip)
             .limit(limit)
+            .all()
+        )
+
+    def weight_total_by_survey_and_respondent(
+        self, db: Session, *, option_question_survey_id:int,
+        respondent_id: int,
+    ):
+        return(
+            db.query(sum(self.model.weight_calculated))
+            .filter(option_question_survey_id == option_question_survey_id, respondent_id == respondent_id)
             .all()
         )
 

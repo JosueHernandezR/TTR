@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 
 class Survey_Results(Base):
     id = Column(Integer, primary_key=True, index=True, unique=True)
-    survey_id = Column(Integer, ForeignKey("survey.id", ondelete="CASCADE", onupdate="CASCADE"))
+    survey_id = Column(Integer, ForeignKey("survey.id", ondelete="CASCADE", onupdate="CASCADE"), nullable=False)
     title = Column(Text, nullable=False)
     porcentaje_aceptacion_inicial = Column(Float, nullable=False)
     tamanio_grupo_votantes = Column(Integer, nullable=False)

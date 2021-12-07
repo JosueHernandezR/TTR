@@ -1,0 +1,237 @@
+{
+  "title": "Encuesta de pruebas",
+  "description": "Esta encuesta es creada para realizar pruebas de funcionamiento de la API.",
+  "active_survey": true
+}
+,
+{
+  "question":"¿Planeas votar en las próximas elecciones?",
+  "accept_open_answer": false,
+  "is_mandatory": true
+}
+,
+{
+  "question":"¿Esta de acuerdo con el actual gobierno?",
+  "accept_open_answer": false,
+  "is_mandatory": true
+}
+,
+{
+  "question":"¿Recomendarías a un amigo o familiar votar por el mismo partido?",
+  "accept_open_answer": false,
+  "is_mandatory": true
+}
+,
+{
+  "question":"¿Asistirías a los eventos realizados por el actual gobierno?",
+  "accept_open_answer": false,
+  "is_mandatory": true
+}
+,
+{
+  "question":"¿Votarías por el mismo partido de este gobierno?",
+  "accept_open_answer": false,
+  "is_mandatory": true
+}
+,
+{
+  "option_name": "A",
+  "option": "Si",
+  "weight": 5
+}
+,
+{
+  "option_name": "B",
+  "option": "Tal vez",
+  "weight": 3
+}
+,
+{
+  "option_name": "C",
+  "option": "No",
+  "weight": 1
+}
+
+[
+  {
+    "title": "Encuesta de pruebas",
+    "description": "Esta encuesta es creada para realizar pruebas de funcionamiento de la API.",
+    "active_survey": true,
+    "id": 1,
+    "create_at": "2021-12-07T03:51:30.391592",
+    "owner_id": 1,
+    "weight_total": 25,
+    "questions": [
+      {
+        "question": "¿Planeas votar en las próximas elecciones?",
+        "accept_open_answer": false,
+        "is_mandatory": true,
+        "id": 1,
+        "survey_id": 1,
+        "question_options": [
+          {
+            "option_name": "A",
+            "option": "Si",
+            "weight": 5,
+            "id": 1,
+            "question_id": 1,
+            "question_survey_id": 1
+          },
+          {
+            "option_name": "B",
+            "option": "Tal vez",
+            "weight": 3,
+            "id": 2,
+            "question_id": 1,
+            "question_survey_id": 1
+          },
+          {
+            "option_name": "C",
+            "option": "No",
+            "weight": 1,
+            "id": 3,
+            "question_id": 1,
+            "question_survey_id": 1
+          }
+        ],
+        "question_option_open": null
+      },
+      {
+        "question": "¿Esta de acuerdo con el actual gobierno?",
+        "accept_open_answer": false,
+        "is_mandatory": true,
+        "id": 2,
+        "survey_id": 1,
+        "question_options": [
+          {
+            "option_name": "A",
+            "option": "Si",
+            "weight": 5,
+            "id": 4,
+            "question_id": 2,
+            "question_survey_id": 1
+          },
+          {
+            "option_name": "B",
+            "option": "Tal vez",
+            "weight": 3,
+            "id": 5,
+            "question_id": 2,
+            "question_survey_id": 1
+          },
+          {
+            "option_name": "C",
+            "option": "No",
+            "weight": 1,
+            "id": 6,
+            "question_id": 2,
+            "question_survey_id": 1
+          }
+        ],
+        "question_option_open": null
+      },
+      {
+        "question": "¿Recomendarías a un amigo o familiar votar por el mismo partido?",
+        "accept_open_answer": false,
+        "is_mandatory": true,
+        "id": 3,
+        "survey_id": 1,
+        "question_options": [
+          {
+            "option_name": "A",
+            "option": "Si",
+            "weight": 5,
+            "id": 7,
+            "question_id": 3,
+            "question_survey_id": 1
+          },
+          {
+            "option_name": "B",
+            "option": "Tal vez",
+            "weight": 3,
+            "id": 8,
+            "question_id": 3,
+            "question_survey_id": 1
+          },
+          {
+            "option_name": "C",
+            "option": "No",
+            "weight": 1,
+            "id": 9,
+            "question_id": 3,
+            "question_survey_id": 1
+          }
+        ],
+        "question_option_open": null
+      },
+      {
+        "question": "¿Asistirías a los eventos realizados por el actual gobierno?",
+        "accept_open_answer": false,
+        "is_mandatory": true,
+        "id": 4,
+        "survey_id": 1,
+        "question_options": [
+          {
+            "option_name": "A",
+            "option": "Si",
+            "weight": 5,
+            "id": 10,
+            "question_id": 4,
+            "question_survey_id": 1
+          },
+          {
+            "option_name": "B",
+            "option": "Tal vez",
+            "weight": 3,
+            "id": 11,
+            "question_id": 4,
+            "question_survey_id": 1
+          },
+          {
+            "option_name": "C",
+            "option": "No",
+            "weight": 1,
+            "id": 12,
+            "question_id": 4,
+            "question_survey_id": 1
+          }
+        ],
+        "question_option_open": null
+      },
+      {
+        "question": "¿Votarías por el mismo partido de este gobierno?",
+        "accept_open_answer": false,
+        "is_mandatory": true,
+        "id": 5,
+        "survey_id": 1,
+        "question_options": [
+          {
+            "option_name": "A",
+            "option": "Si",
+            "weight": 5,
+            "id": 13,
+            "question_id": 5,
+            "question_survey_id": 1
+          },
+          {
+            "option_name": "B",
+            "option": "Tal vez",
+            "weight": 3,
+            "id": 14,
+            "question_id": 5,
+            "question_survey_id": 1
+          },
+          {
+            "option_name": "C",
+            "option": "No",
+            "weight": 1,
+            "id": 15,
+            "question_id": 5,
+            "question_survey_id": 1
+          }
+        ],
+        "question_option_open": null
+      }
+    ]
+  }
+]

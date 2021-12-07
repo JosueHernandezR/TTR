@@ -1,8 +1,8 @@
-"""Primera revision
+"""First version
 
-Revision ID: 031006e8f61a
+Revision ID: 9dee2f06cd9c
 Revises: 
-Create Date: 2021-12-05 19:07:15.176563
+Create Date: 2021-12-07 03:51:27.433704
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '031006e8f61a'
+revision = '9dee2f06cd9c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -45,16 +45,18 @@ def upgrade():
     sa.Column('porcentaje_victoria', sa.Float(), nullable=False),
     sa.Column('porcentaje_derrota', sa.Float(), nullable=False),
     sa.Column('porcentaje_aceptacion_final', sa.Float(), nullable=False),
+    sa.Column('iteraciones_para_eliminación', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['owner_id'], ['user.id'], onupdate='CASCADE', ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_prediction_manual_id'), 'prediction_manual', ['id'], unique=True)
+    op.create_index(op.f('ix_prediction_manual_id'), 'prediction_manual', ['id'], unique=False)
     op.create_table('survey',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(), nullable=True),
     sa.Column('description', sa.Text(), nullable=True),
     sa.Column('create_at', sa.DateTime(), nullable=True),
     sa.Column('active_survey', sa.Boolean(), nullable=True),
+    sa.Column('weight_total', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['user.id'], onupdate='CASCADE', ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
@@ -72,7 +74,6 @@ def upgrade():
     )
     op.create_index(op.f('ix_question_id'), 'question', ['id'], unique=False)
     op.create_index(op.f('ix_question_question'), 'question', ['question'], unique=False)
-    op.create_index(op.f('ix_question_survey_id'), 'question', ['survey_id'], unique=True)
     op.create_table('survey_results',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('survey_id', sa.Integer(), nullable=True),
@@ -83,6 +84,7 @@ def upgrade():
     sa.Column('porcentaje_victoria', sa.Float(), nullable=False),
     sa.Column('porcentaje_derrota', sa.Float(), nullable=False),
     sa.Column('porcentaje_aceptacion_final', sa.Float(), nullable=False),
+    sa.Column('iteraciones_para_eliminación', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['survey_id'], ['survey.id'], onupdate='CASCADE', ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
@@ -92,45 +94,35 @@ def upgrade():
     sa.Column('option_name', sa.String(length=3), nullable=False),
     sa.Column('option', sa.Text(), nullable=False),
     sa.Column('weight', sa.Integer(), nullable=False),
-    sa.Column('question_id', sa.Integer(), nullable=False),
+    sa.Column('question_id', sa.Integer(), nullable=True),
     sa.Column('question_survey_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['question_id'], ['question.id'], onupdate='CASCADE', ondelete='CASCADE'),
-    sa.ForeignKeyConstraint(['question_survey_id'], ['question.survey_id'], onupdate='CASCADE', ondelete='CASCADE'),
-    sa.PrimaryKeyConstraint('id', 'question_id', 'question_survey_id'),
-    sa.UniqueConstraint('id', 'question_id', 'question_survey_id')
+    sa.ForeignKeyConstraint(['question_id'], ['question.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_question_option_id'), 'question_option', ['id'], unique=True)
-    op.create_index(op.f('ix_question_option_question_id'), 'question_option', ['question_id'], unique=True)
-    op.create_index(op.f('ix_question_option_question_survey_id'), 'question_option', ['question_survey_id'], unique=True)
+    op.create_index(op.f('ix_question_option_id'), 'question_option', ['id'], unique=False)
     op.create_table('question_option_open',
-    sa.Column('id', sa.Integer(), nullable=True),
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('weight_max', sa.Integer(), nullable=False),
-    sa.Column('question_id', sa.Integer(), nullable=False),
+    sa.Column('question_id', sa.Integer(), nullable=True),
     sa.Column('question_survey_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['question_id'], ['question.id'], onupdate='CASCADE', ondelete='CASCADE'),
-    sa.ForeignKeyConstraint(['question_survey_id'], ['question.survey_id'], onupdate='CASCADE', ondelete='CASCADE'),
-    sa.PrimaryKeyConstraint('question_id', 'question_survey_id')
+    sa.ForeignKeyConstraint(['question_id'], ['question.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_question_option_open_id'), 'question_option_open', ['id'], unique=True)
-    op.create_index(op.f('ix_question_option_open_question_id'), 'question_option_open', ['question_id'], unique=True)
-    op.create_index(op.f('ix_question_option_open_question_survey_id'), 'question_option_open', ['question_survey_id'], unique=True)
+    op.create_index(op.f('ix_question_option_open_id'), 'question_option_open', ['id'], unique=False)
     op.create_table('answer_option',
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('respondent_id', sa.Integer(), nullable=False),
     sa.Column('option_id', sa.Integer(), nullable=False),
     sa.Column('option_question_id', sa.Integer(), nullable=False),
     sa.Column('option_question_survey_id', sa.Integer(), nullable=False),
     sa.Column('weight_elected', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['option_id'], ['question_option.id'], onupdate='CASCADE', ondelete='CASCADE'),
-    sa.ForeignKeyConstraint(['option_question_id'], ['question_option.question_id'], onupdate='CASCADE', ondelete='CASCADE'),
-    sa.ForeignKeyConstraint(['option_question_survey_id'], ['question_option.question_survey_id'], onupdate='CASCADE', ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['respondent_id'], ['user.id'], onupdate='CASCADE', ondelete='CASCADE'),
-    sa.PrimaryKeyConstraint('respondent_id', 'option_id', 'option_question_id', 'option_question_survey_id'),
-    sa.UniqueConstraint('option_id'),
-    sa.UniqueConstraint('option_question_id'),
-    sa.UniqueConstraint('option_question_survey_id'),
-    sa.UniqueConstraint('respondent_id')
+    sa.PrimaryKeyConstraint('id')
     )
+    op.create_index(op.f('ix_answer_option_id'), 'answer_option', ['id'], unique=True)
     op.create_table('answer_option_open',
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('respondent_id', sa.Integer(), nullable=False),
     sa.Column('option_id', sa.Integer(), nullable=False),
     sa.Column('option_question_id', sa.Integer(), nullable=False),
@@ -138,33 +130,25 @@ def upgrade():
     sa.Column('answer_text', sa.Text(), nullable=False),
     sa.Column('weight_calculated', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['option_id'], ['question_option.id'], onupdate='CASCADE', ondelete='CASCADE'),
-    sa.ForeignKeyConstraint(['option_question_id'], ['question_option.question_id'], onupdate='CASCADE', ondelete='CASCADE'),
-    sa.ForeignKeyConstraint(['option_question_survey_id'], ['question_option.question_survey_id'], onupdate='CASCADE', ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['respondent_id'], ['user.id'], onupdate='CASCADE', ondelete='CASCADE'),
-    sa.PrimaryKeyConstraint('respondent_id', 'option_id', 'option_question_id', 'option_question_survey_id'),
-    sa.UniqueConstraint('option_id'),
-    sa.UniqueConstraint('option_question_id'),
-    sa.UniqueConstraint('option_question_survey_id'),
-    sa.UniqueConstraint('respondent_id')
+    sa.PrimaryKeyConstraint('id')
     )
+    op.create_index(op.f('ix_answer_option_open_id'), 'answer_option_open', ['id'], unique=True)
     # ### end Alembic commands ###
 
 
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
+    op.drop_index(op.f('ix_answer_option_open_id'), table_name='answer_option_open')
     op.drop_table('answer_option_open')
+    op.drop_index(op.f('ix_answer_option_id'), table_name='answer_option')
     op.drop_table('answer_option')
-    op.drop_index(op.f('ix_question_option_open_question_survey_id'), table_name='question_option_open')
-    op.drop_index(op.f('ix_question_option_open_question_id'), table_name='question_option_open')
     op.drop_index(op.f('ix_question_option_open_id'), table_name='question_option_open')
     op.drop_table('question_option_open')
-    op.drop_index(op.f('ix_question_option_question_survey_id'), table_name='question_option')
-    op.drop_index(op.f('ix_question_option_question_id'), table_name='question_option')
     op.drop_index(op.f('ix_question_option_id'), table_name='question_option')
     op.drop_table('question_option')
     op.drop_index(op.f('ix_survey_results_id'), table_name='survey_results')
     op.drop_table('survey_results')
-    op.drop_index(op.f('ix_question_survey_id'), table_name='question')
     op.drop_index(op.f('ix_question_question'), table_name='question')
     op.drop_index(op.f('ix_question_id'), table_name='question')
     op.drop_table('question')

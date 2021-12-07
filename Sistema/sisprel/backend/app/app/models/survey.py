@@ -21,3 +21,6 @@ class Survey(Base):
     owner_id = Column(Integer, ForeignKey("user.id", onupdate="CASCADE", ondelete="CASCADE"))
 
     owner = relationship("User", backref="survey")
+
+    # Relacion 1 a muchos
+    questions = relationship("Question", back_populates="surveys")

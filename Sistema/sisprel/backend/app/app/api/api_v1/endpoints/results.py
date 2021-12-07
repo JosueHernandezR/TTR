@@ -7,7 +7,7 @@ from app.api import deps
 
 router = APIRouter()
 
-@router.post("/", response_model=schemas.ResultPrediction)
+@router.post("/create-survey-result", response_model=schemas.ResultPrediction)
 def createSurveyResultPrediction(
     *,
     db: Session = Depends(deps.get_db),
@@ -15,10 +15,22 @@ def createSurveyResultPrediction(
     survey_id: int,
     current_user: models.User = Depends(deps.get_current_active_user)
     ) -> Any:
+    aceptacion_all = len(crud.survey_aceptacion.get_all_aceptacion_by_survey(
+        db=db,
+        survey_id=survey_id
+    ))
+    num_participantes = len(
+        crud.survey_aceptacion.get_all_participants_by_survey(
+            db=db,
+            survey_id=survey_id
+        )
+    )
     survey_result_prediction = crud.survey_result.createSurveyResults(
         db = db,
         obj_in = prediction_in,
         survey_id = survey_id,
+        num_aceptacion=aceptacion_all,
+        num_participantes=num_participantes
     )
     return survey_result_prediction
 

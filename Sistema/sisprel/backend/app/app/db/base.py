@@ -8,5 +8,6 @@ from app.models.question_option_open import Question_option_open # noqa
 from app.models.survey import Survey # noqa
 from app.models.answer_option import Answer_Option # noqa
 from app.models.answer_option_open import Answer_Option_Open # noqa
-from app.models.results import Survey_Results
-from app.models.predictions import Prediction_Manual
+from app.models.results import Survey_Results # noqa
+from app.models.predictions import Prediction_Manual # noqa
+from app.models.survey_aceptacion import Survey_Aceptacion # noqa
