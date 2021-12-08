@@ -50,6 +50,26 @@ def read_all_predictions_by_owner(
     )
     return predictions
 
+# Leer una predicción
+@router.get("/{id}", response_model=schemas.ResultPrediction)
+def read_a_prediction(
+    *,
+    db: Session = Depends(deps.get_db),
+    id: int,
+    current_user: models.User = Depends(deps.get_current_active_user),
+) -> Any:
+    """
+    Get result survey by ID
+    """
+    prediction = crud.prediction_manual.get(db=db, id=id)
+    if not prediction:
+        raise HTTPException(
+            status_code=404,
+            detail="Predicción no encontrada"
+        )
+    # Desarrollar la funcion de obtener la encuesta con el id
+    return prediction
+
 @router.delete("/{id}", response_model=schemas.Prediction)
 def delete_prediction(
     *,
