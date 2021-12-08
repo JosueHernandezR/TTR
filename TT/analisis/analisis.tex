@@ -54,7 +54,7 @@ Con la tabla \ref{table:Case} se da por hecho que se usará el Software de Visua
 \hline
 \rowcolor[HTML]{3531FF} 
 {\color[HTML]{FFFFFF} Nombre} & {\color[HTML]{FFFFFF} Orientado a objetos} & {\color[HTML]{FFFFFF} Multiplataforma} & {\color[HTML]{FFFFFF} Famialiarización con el lenguaje} \\ \hline
-Dart & Si & Si & Si \\ \hline
+%Dart & Si & Si & Si \\ \hline
 Python & Si & Si & Si \\ \hline
 Java & Si & Si & No \\ \hline
 \end{tabular}
@@ -62,59 +62,6 @@ Java & Si & Si & No \\ \hline
 \label{table:Programacion}
 \end{table}
 Los lenguajes a utilizar para desarrollar el sistema son dos: Dart y Python. Java no se usará porque no se está familiarizado con el lenguaje y por otro lado, consume recursos ya que esté utiliza una máquina virtual para poder ejecutar las aplicaciones a desarrollar y que en equipos poco potentes la experiencia de usuario pueda verse afectada. Sin embargo, Dart y Python son opciones viables ya que cada uno tiene frameworks que facilitarán la creación del sistema, a continuación se presentarán características de los lenguajes de programación electos.
-
-\subsubsection{Dart y Flutter}
-Dart es un lenguaje de programación orientado a objetos y definido por clases. La maquina virtual de Dart cuenta con un motor de ejecución \acrfull{JIT}. Al escribir y depurar una aplicación, la compilación \acrshort{JIT} permite la "recarga en caliente" con la que se inyectar modificaciones a los archivos de origen en una aplicación en ejecución \cite{Vega2019}. 
-
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[scale=0.1]{TT/img/analisis/dartlogo.png}
-    \caption{Logo de Dart}
-    \label{graphic:DartLogo}    
-\end{figure}
-
-El motor de ejecución de Dart puede ser \acrfull{AOT} compilado en código nativo rápido y predecible, lo que permite que casi todo Flutter sea escrito en Dart. Esto no sólo hace que Flutter sea rápido, sino que prácticamente todo (incluidos todos los widgets) se puede personalizar. Dart facilita la creación de animaciones y transiciones suaves que se ejecutan a 60fps.
-
-Además, Dart es declarativo y, por lo tanto, permite evitar la necesidad de un lenguaje de diseño declarativo separado como \Gls{JSX} o \Gls{XML}, o constructores de interfaz visual separados. Todo el diseño se realiza en un idioma y en el mismo archivo, por lo que es fácil tener herramientas avanzadas que hacen que el diseño y la construcción del diseño sean muy rápidos.
-
-\textbf{Todo es un Widget}
-
-El 4 de diciembre de 2018, Google anunció la primera versión estable del framework Flutter. Flutter permite un desarrollo rápido para plataformas móviles y últimamente para plataformas web y de escritorio. 
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[scale=0.3]{TT/img/analisis/flutterlogo.png}
-    \caption{Logo de Flutter}
-    \label{graphic:FlutterLogo}    
-\end{figure}
-El bloque fundamental de flutter es el Widget: todo es un widget. El desarrollo de Flutter consiste en describir el diseño de la aplicación en el dispositivo, componiendo, ensamblando y creando widgets a partir de otros. Todos estos están organizados en un árbol, que tiene como raíz el método buid() del Widget de la aplicación principal.
-
-Cada hoja del árbol es hija de su widget padre, que se construye después de sus hijos. Una página de documentación dice: "Un widget es una descripción inmutable de parte de una interfaz de usuario" \cite{Flutter2020}.
-
-Sin embargo, hay muchos tipos de widgets en Flutter y durante el desarrollo común no se puede ver ni tocar todos. Una cadena de texto es un widget(\textbf{Text}), pero también lo es su estilo (\textbf{TextStyle}), que define cosas como tamaño, color, fuente y tamaño. 
-
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[scale=1]{TT/img/analisis/UIElementA.png}
-    \caption{Interfaz gráfica.}
-    \label{graphic:UIPart}
-\end{figure}
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[scale=1]{TT/img/analisis/UIElementB.png}
-    \caption{Identificación de los elementos de la interfaz gráfica.}
-    \label{graphic:UIElements}
-\end{figure}
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[scale=0.6]{TT/img/analisis/UIElementC.png}
-    \caption{Estructura de árbol de un conjunto de Widgets.}
-    \label{graphic:UITree}
-\end{figure}
-Hay Widgets que representan cosas, otros que representan características (como TextStyle) e incluso otros que realizan acciones. Se pueden crear widgets complejos combinando muchos más simples, y una aplicación es en realidad el widget más grande de todos (generalmente llamado MyApp) que contiene todos los demás widgets. 
-
-En la figura \ref{graphic:UITree} se muestra el árbol de widgets que subyace al elemento UI mostrado. La interfaz de usuario es una fila simple que contiene 3 botones con un icono y una descripción de cada uno. Esto se traduce en la estructura del widget al tener una repetición de 3 estructuras idénticas, construyendo el botón en si, todo configurado en una fila contenida en un widget contenedor que permite establecer algunas propiedades de dimensión.
-
-Para ver un ejemplo en código, ir hacia el apéndice \ref{aped.A}
 
 \subsubsection{Python y FastApi}
 Python es un lenguaje de programación interpretado cuya filosofía hace hincapié en la legibilidad de su código. Se trata de un lenguaje de programación multiparadigma, ya que soporta parcialmente la orientación a objetos, programación imperativa y, en menor medida, programación funcional. Es un lenguaje interpretado, dinámico y multiplataforma.
@@ -158,9 +105,89 @@ Sus características principales son:
     \item \textbf{Basado en estándares: }Basado y totalmente compatible con los estándares abiertos para APIs:  OpenAPI (conocido previamente como Swagger) y JSON Schema.
 \end{itemize}
 
-\textit{* Esta estimación está basada en pruebas con un equipo de desarrollo interno contruyendo aplicaciones listas para producción.}
+\textit{* Esta estimación está basada en pruebas con un equipo de desarrollo interno construyendo aplicaciones listas para producción.}
+
+\section{OAuth 2}
+OAuth 2 es una estructura de autorización que permite a las aplicaciones obtener acceso limitado a cuentas de usuario en un servicio HTTP, algunos ejemplos son Facebook, Github, Microsoft entre otros. Usa diferentes flujos de autenticación como el flujo de código de autorización, el flujo de propietario de contraseña, el flujo implícito entre otros, pero también da la oportunidad de definir nuevos flujos. \cite{Anicas2018}, \cite{Magana2020}
+
+\subsection{Roles}
+Dentro de OAuth 2.0 se encuentran 4 roles diferentes que participan en el proceso:
+\begin{itemize}
+    \item Dueño del recurso (Owner).
+    \item Cliente (Cliente).
+    \item Servidor de recursos protegidos (Resource Server).
+    \item Servidor de autorización (Authorization Server).
+\end{itemize}
+
+\subsubsection{Dueño del recurso}
+El propietario del recurso es el "usuario" que da la autorización a una aplicación, para que esta acceda a su cuenta y poder realizar acciones a su nombre. \cite{Magana2020}
+
+El conjunto de acciones que puede realizar la aplicación en su nombre se le llama alcance y podría ser, por ejemplo, acceso de escritura o lectura.
+
+Se le llama dueño del recurso porque, si bien la API no es suya, los datos que maneja sí lo son.
+
+\subsubsection{Cliente}
+El cliente sería la aplicación que desea acceder a esa cuenta de usuario, no sin antes, debe ser autorizada por el usuario y ser validada por la API.\cite{Anicas2018},
+
+\subsubsection{Servidor de autorización}
+El servidor de autorización es el responsable de gestionar las peticiones de autorización, osease, verifica la identidad de los usuarios y emite una serie de tokens de acceso a la aplicación cliente.\cite{Anicas2018},
+
+\subsubsection{Servidor de recursos}
+El servidor de recursos es la API, es decir, el servidor que aloja el recurso protegido al cual queremos acceder. Puede formar parte de la misma aplicacion que el propio servidor de autenticación.\cite{Anicas2018},
+
+\subsection{Flujo de protocolo abstracto}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.50]{TT/img/analisis/Abstract-Protocol-Flow-Spanish@2x.png}
+    \caption{Flujo de protocolo abstracto. \cite{Anicas2018}}
+    \label{graphic:OAuth2}
+\end{figure}
+
+A continuación se realiza una explicación mas detallada de los pasos del diagrama \ref{graphic:OAuth2}:
+
+\begin{enumerate}
+    \item La aplicación solicita autorización para acceder a los recursos de servicio del usuario.
+    \item Si el usuario autoriza la solicitud, la aplicación recibe la autorización.
+    \item La aplicación solicita al servidor de autorización (API), presentando la autenticación de su identidad y la autorización otorgada La aplicación solicita al servidor de autorización (API) un token de acceso presentando la autenticación de su propia identidad y la autorización otorgada.
+    \item Si la identidad de la aplicación es autenticada y la autorización es válida, el servidor de autorización (API) emite un token de acceso a la aplicación. La autorización finaliza.
+    \item La aplicación solicita el recurso al servidor de recursos (API) y presenta el token de acceso para autenticarse.
+    \item Si el token de acceso es válido, el servidor de recursos (API) provee el recurso a la aplicación.
+\end{enumerate}
+
+El flujo de este proceso será diferente dependiendo del tipo de autorización que se escoja, sin embargo, esta es la idea general. \cite{Anicas2018}
+
+\subsection{Tipos de clientes}
+
+\begin{itemize}
+    \item \textbf{Clientes confidenciales: }son aquellos que son capaces de guardar una contraseña sin que sea expuesta. Una aplicación compilada es un ejemplo.
+    \item \textbf{Clientes públicos: }son aquellos que no son capaces de mantener esta contraseña a salvo, un buen ejemplo son las aplicaciones web.
+\end{itemize}
+
+\subsection{Tipos de concesión (Gran types)}
+Con esta estructura disponemos de diferentes tipos de concesión, a continuación se muestran algunas de las más conocidas:
+\begin{itemize}
+    \item \textbf{Código de autorización: }usado con aplicaciones del lado del servidor.
+    \item \textbf{Implícito: }utilizado con aplicaciones móviles o aplicaciones web (aplicaciones que se ejecutan en el dispositivo del usuario)
+    \item \textbf{Credenciales de contraseña del propietario del recurso: }utilizado con aplicaciones confiables, como aquellas pertenecientes al servicio.
+    \item \textbf{Credenciales del cliente: }basada en las credenciales de cliente.
+\end{itemize}
+
+Para el desarrollo de este proyecto se usará el tipo de otorgamiento: Credenciales de contraseña del propietario del recurso, este mismo se describirá a continuación.
+
+\subsection{Tipo de otorgamiento: Credenciales de contraseña del propietario del recurso}
+Con el tipo de otorgamiento de credenciales de contraseña del propietario del recurso, el usuario proporciona sus credenciales de servicio (nombre de usuario y contraseña) directamente a la aplicación, la cual utiliza dichas credenciales para obtener del servicio un token de acceso. \cite{Anicas2018}
+
+\subsubsection{Flujo de credenciales de contraseña}
+Después de que el usuario proporcione sus credenciales a la aplicación, ésta solicitará un token de acceso desde el servidor de autorizaciones. La solicitud POST puede ser similar a lo siguiente:
+
+\textit{https://oauth.example.com/token?grant\_type=password&username=USERNAME&password=PASSWORD&client\_id=CLIENT\_ID}
+
+Si se comprueban las credenciales del usuario, el servidor de autorización devuelve un token de acceso a la aplicación.\cite{Anicas2018}
+
+
 \section{Metodología}
-Para este trabajo terminal se utilizará la metodología de \acrfull{RAD}, dado que el tiempo de desarrollo es corto, esta metodología permite centrarse en el producto final, hace hincapié en el desarrollo de prioridades y la definición de los plazos de entrega, si estos empiezan a atrasarse permite la reducción de requisitos para el ajuste y de esta manera no aumentar la fecha limite de entrega. Por otro lado la participación de los usuarios es necesaria para el diseño del sistema.\cite{dra}
+Para este trabajo terminal se utilizará la metodología de \acrfull{RAD}, dado que el tiempo de desarrollo es corto, esta metodología permite centrarse en el producto final, hace hincapié en el desarrollo de prioridades y la definición de los plazos de entrega, si estos empiezan a atrasarse permite la reducción de requisitos para el ajuste y de esta manera no prolongar la fecha limite de entrega. Por otro lado la participación de los usuarios es necesaria para el diseño del sistema.\cite{dra}
 
 \begin{figure}[!ht]
     \centering
@@ -168,6 +195,7 @@ Para este trabajo terminal se utilizará la metodología de \acrfull{RAD}, dado 
     \caption{Desarrollo rápido de aplicaciones}
     \label{graphic:RAD}
 \end{figure}
+
 \section{Requerimientos}
 Hasta este punto, se ha presentado conceptos teóricos con los que el sistema se basará para su desarrollo y se ha realizado un análisis de las herramientas y técnicas de programación que se usarán a lo largo del desarrollo del sistema, a continuación se describirá toda la funcionalidad que este tendrá.
 
