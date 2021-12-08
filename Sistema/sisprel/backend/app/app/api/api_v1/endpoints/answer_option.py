@@ -93,16 +93,3 @@ def read_answers_by_survey_and_respondent(
         raise HTTPException(status_code=404, detail="Respuestas no encontradas")
 
     return answers_by_survey_and_respondent
-
-#Test
-@router.get("/consult-a-sum")
-def get_a_sum(
-    option_question_survey_id: int,
-    current_user: models.User = Depends(deps.get_current_active_user),
-    db: Session = Depends(deps.get_db)
-):
-    sum_result = crud.answer_option.weight_total_by_survey_and_respondent(
-        db=db, option_question_survey_id=option_question_survey_id,
-        respondent_id=current_user.id,
-    )
-    return sum_result

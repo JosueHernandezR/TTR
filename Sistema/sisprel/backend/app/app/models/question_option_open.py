@@ -14,7 +14,7 @@ class Question_option_open(Base):
     #id = Column(Integer, primary_key=True, nullable= False, index=True, unique=True, autoincrement=True)
     weight_max = Column(Integer, nullable=False)
     #question_id = Column(Integer, nullable=False, index=True,)
-    question_id = Column(Integer, ForeignKey("question.id"))
+    question_id = Column(Integer, ForeignKey("question.id", onupdate="CASCADE", ondelete="CASCADE"))
     question_survey_id = Column(Integer, nullable=False)
     
     #question_survey_id = Column(Integer, nullable=False, index=True)

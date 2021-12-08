@@ -16,7 +16,7 @@ class Question_option(Base):
     weight = Column(Integer(), nullable=False)
 
     #question_id = Column(Integer, nullable=False, index=True, primary_key=True)
-    question_id = Column(Integer, ForeignKey("question.id"))
+    question_id = Column(Integer, ForeignKey("question.id", onupdate="CASCADE", ondelete="CASCADE"))
     #"uestion_survey_id = Column(Integer, nullable=False, index=True, primary_key=True)
     #question_survey_id = Column(Integer, ForeignKey("question.survey_id"))
     question_survey_id = Column(Integer, nullable=False)

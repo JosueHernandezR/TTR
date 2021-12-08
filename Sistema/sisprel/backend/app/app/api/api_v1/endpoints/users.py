@@ -92,6 +92,7 @@ def create_user_open(
     db: Session = Depends(deps.get_db),
     password: str = Body(...),
     email: EmailStr = Body(...),
+    gender: str = Body(...),
     first_name: str = Body(None),
     last_name: str = Body(None),
 

@@ -14,6 +14,7 @@ def create_question_option(
     question_option_in: schemas.QuestionOptionCreate,
     question_id: int,
     question_survey_id: int,
+    current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     question_option = crud.question_option.create_question_option(
         db=db, 
@@ -28,6 +29,7 @@ def read_question_option(
         *,
         db: Session = Depends(deps.get_db),
         id: int,
+        current_user: models.User = Depends(deps.get_current_active_user),
     ) -> Any:
     """
     Get question option by ID.
@@ -47,6 +49,7 @@ def update_question_option(
         db: Session = Depends(deps.get_db),
         id: int,
         question_option_in: schemas.QuestionOptionUpdate,
+        current_user: models.User = Depends(deps.get_current_active_user),
     ) -> Any:
     """
     Update a question option .
@@ -63,6 +66,7 @@ def update_question(
         *,
         db: Session = Depends(deps.get_db),
         id: int,
+        current_user: models.User = Depends(deps.get_current_active_user),
     ) -> Any:
     """
     Delete a question option.

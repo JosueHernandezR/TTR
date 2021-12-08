@@ -17,10 +17,10 @@ class QuestionUpdate(QuestionBase):
     pass
 
 class QuestionInDBBase(QuestionBase):
-    id: int
-    question: str
-    survey_id: int
-    question_options: List[QuestionOption] = []
+    id: Optional[int]
+    question: Optional[str]
+    survey_id: Optional[int]
+    question_options: Optional[List[QuestionOption]] = []
     question_option_open: QuestionOptionOpen = None
 
     class Config:

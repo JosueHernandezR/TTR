@@ -23,4 +23,3 @@ class Answer_Option(Base):
     option_question_id = Column(Integer, nullable=False)
     option_question_survey_id = Column(Integer, nullable=False)
     weight_selected = Column(Integer, nullable=False)
-
