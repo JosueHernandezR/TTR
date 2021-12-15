@@ -1,3 +1,44 @@
+// Usuarios abiertos
+{
+  "password": "string",
+  "email": "user1@example.com",
+  "gender": "M",
+  "first_name": "Juan",
+  "last_name": "1"
+}
+,
+{
+  "password": "string",
+  "email": "user2@example.com",
+  "gender": "H",
+  "first_name": "Juan",
+  "last_name": "2"
+}
+,
+{
+  "password": "string",
+  "email": "user3@example.com",
+  "gender": "M",
+  "first_name": "Juan",
+  "last_name": "3"
+}
+,
+{
+  "password": "string",
+  "email": "user4@example.com",
+  "gender": "M",
+  "first_name": "Juan",
+  "last_name": "4"
+}
+,
+{
+  "password": "string",
+  "email": "user5@example.com",
+  "gender": "H",
+  "first_name": "Juan",
+  "last_name": "5"
+}
+,
 {
   "title": "Encuesta de pruebas",
   "description": "Esta encuesta es creada para realizar pruebas de funcionamiento de la API.",
