@@ -1,13 +1,13 @@
 \chapter{Análisis} \label{analisis}
-\epigraph{\textit{Research is what I'm doing when I don't know what I'm doing.   
-	}}{\textit{— Wernher von Braun, NASA engineer}}
-	\vspace*{8cm}
-	\begin{center}
-		\centering
-		\includegraphics[width=10.5cm]{example-image}
-    \end{center}
-\thispagestyle{empty}
-\newpage
+%\epigraph{\textit{Research is what I'm doing when I don't know what I'm doing.   
+%	}}{\textit{— Wernher von Braun, NASA engineer}}
+%	\vspace*{8cm}
+%	\begin{center}
+%		\centering
+%		\includegraphics[width=10.5cm]{example-image}
+%    \end{center}
+%\thispagestyle{empty}
+%\newpage
 \vspace*{2cm}
 
 \section{Estudio de factibilidad}
@@ -61,10 +61,10 @@ Java & Si & Si & No \\ \hline
 \caption{Lenguajes de programación}
 \label{table:Programacion}
 \end{table}
-Los lenguajes a utilizar para desarrollar el sistema son dos: Dart y Python. Java no se usará porque no se está familiarizado con el lenguaje y por otro lado, consume recursos ya que esté utiliza una máquina virtual para poder ejecutar las aplicaciones a desarrollar y que en equipos poco potentes la experiencia de usuario pueda verse afectada. Sin embargo, Dart y Python son opciones viables ya que cada uno tiene frameworks que facilitarán la creación del sistema, a continuación se presentarán características de los lenguajes de programación electos.
+El lenguaje a utilizar para desarrollar el sistema es: Python. Java no se usará porque no se está familiarizado con el lenguaje y por otro lado, consume recursos ya que esté utiliza una máquina virtual para poder ejecutar las aplicaciones a desarrollar y que en equipos poco potentes la experiencia de usuario pueda verse afectada. Sin embargo, Python es la opciones viable ya que tiene  un framework que facilitará la creación del sistema, a continuación se presentarán características de los lenguajes de programación electos.
 
 \subsubsection{Python y FastApi}
-Python es un lenguaje de programación interpretado cuya filosofía hace hincapié en la legibilidad de su código. Se trata de un lenguaje de programación multiparadigma, ya que soporta parcialmente la orientación a objetos, programación imperativa y, en menor medida, programación funcional. Es un lenguaje interpretado, dinámico y multiplataforma.
+Python es un lenguaje de programación interpretado cuya filosofía hace hincapié en la legibilidad de su código. Se trata de un lenguaje de programación multiparadigma, ya que soporta parcialmente la orientación a objetos, programación imperativa y, en menor medida, programación funcional. Es un lenguaje interpretado, dinámico y multiplataforma. \cite{LUCADecisions}
 
 Es administrado por la Python Software Foundation. Posee una licencia de código abierto, denominada Python Software Foundation License. Python se clasifica constantemente como uno de los lenguajes de programación más populares.
 
@@ -105,7 +105,7 @@ Sus características principales son:
     \item \textbf{Basado en estándares: }Basado y totalmente compatible con los estándares abiertos para APIs:  OpenAPI (conocido previamente como Swagger) y JSON Schema.
 \end{itemize}
 
-\textit{* Esta estimación está basada en pruebas con un equipo de desarrollo interno construyendo aplicaciones listas para producción.}
+\textit{* Esta estimación está basada en pruebas con un equipo de desarrollo interno construyendo aplicaciones listas para producción.\cite{Ramirez2021}}
 
 \section{OAuth 2}
 OAuth 2 es una estructura de autorización que permite a las aplicaciones obtener acceso limitado a cuentas de usuario en un servicio HTTP, algunos ejemplos son Facebook, Github, Microsoft entre otros. Usa diferentes flujos de autenticación como el flujo de código de autorización, el flujo de propietario de contraseña, el flujo implícito entre otros, pero también da la oportunidad de definir nuevos flujos. \cite{Anicas2018}, \cite{Magana2020}
@@ -133,7 +133,7 @@ El cliente sería la aplicación que desea acceder a esa cuenta de usuario, no s
 El servidor de autorización es el responsable de gestionar las peticiones de autorización, osease, verifica la identidad de los usuarios y emite una serie de tokens de acceso a la aplicación cliente.\cite{Anicas2018},
 
 \subsubsection{Servidor de recursos}
-El servidor de recursos es la API, es decir, el servidor que aloja el recurso protegido al cual queremos acceder. Puede formar parte de la misma aplicacion que el propio servidor de autenticación.\cite{Anicas2018},
+El servidor de recursos es la API, es decir, el servidor que aloja el recurso protegido al cual queremos acceder. Puede formar parte de la misma aplicación que el propio servidor de autenticación.\cite{Anicas2018},
 
 \subsection{Flujo de protocolo abstracto}
 
@@ -181,10 +181,19 @@ Con el tipo de otorgamiento de credenciales de contraseña del propietario del r
 \subsubsection{Flujo de credenciales de contraseña}
 Después de que el usuario proporcione sus credenciales a la aplicación, ésta solicitará un token de acceso desde el servidor de autorizaciones. La solicitud POST puede ser similar a lo siguiente:
 
-\textit{https://oauth.example.com/token?grant\_type=password&username=USERNAME&password=PASSWORD&client\_id=CLIENT\_ID}
+\textit{https://oauth.example.com/token?grant-type=password \&username=USERNAME\& password= PASSWORD \&client-id=CLIENT-ID}
 
 Si se comprueban las credenciales del usuario, el servidor de autorización devuelve un token de acceso a la aplicación.\cite{Anicas2018}
 
+%
+\section{Justificación de las herramientas elegidas}
+Las herramientas, protocolos, el lenguaje y frameworks descritos anteriormente fueron elegidos para desarrollar la solución propuesta. 
+
+Python es el lenguaje de programación que su facilidad de uso y aprendizaje junto con su continua optimización es la elección ideal para este proyecto, sus continuas correcciones y actualizaciones da fiabilidad a los proyectos realizados.
+
+FastAPI es desarrollado con Python, por lo cual, aprovecha los beneficios de este y facilita aún mas el crear una API desde cero ya que es una herramienta usada en la industria lo que da certeza de su fiabilidad y por lo tanto, tiene madurez para que el desarrollo del proyecto sea estable, lo que genera una buena comunidad de desarrollo que se aprovecha para aclarar dudas y resolver errores, todo esto es posible con su buena documentación y continua actualización de esta misma. Su creador ha generado ejemplos para familiarizarse con la herramienta y es documentada para su fácil comprensión, lo cual fue aprovechado para crear este proyecto.  Con FastAPI se resuelve la característica planteada que es el crear un sistema en la web que permita realizar los cálculos y peticiones necesarias para realizar las predicciones, que es el propósito de este proyecto.
+
+Oauth 2 es una herramienta/protocolo que añade seguridad al proyecto \cite{Anicas2018, Magana2020}, que permite blindar los puntos de acceso de la API de usos no autorizados, esto es implementado para permitir el acceso al servidor de recursos y hacer uso de estos siempre y cuando, se tenga una cuenta válida y activa en el sistema.
 
 \section{Metodología}
 Para este trabajo terminal se utilizará la metodología de \acrfull{RAD}, dado que el tiempo de desarrollo es corto, esta metodología permite centrarse en el producto final, hace hincapié en el desarrollo de prioridades y la definición de los plazos de entrega, si estos empiezan a atrasarse permite la reducción de requisitos para el ajuste y de esta manera no prolongar la fecha limite de entrega. Por otro lado la participación de los usuarios es necesaria para el diseño del sistema.\cite{dra}
@@ -223,7 +232,7 @@ Para la comprensión de las tablas que describen los requerimientos son \textbf{
     RFS004&Encuestas&Permitir la creación de encuestas mediante el uso de usuarios registrados. \\ \hline
     RFS005&Visualización de datos&Permitir la visualización de los resultados obtenidos de encuestas a todos los usuarios del sistema. \\ \hline
     RFS006&Guardar encuestas&El sistema debe guardar las encuestas creadas por los usuarios. \\\hline
-    RFS007&Encuestas&Las encuestas solo podrán ser de selección múltiple, lista desplegable y preguntas abiertas. \\ \hline
+    RFS007&Encuestas&Las encuestas solo podrán ser de opción múltiple. \\ \hline
     RFS008&Asignación de peso para respuestas&El sistema debe de poder dejar al usuario registrado asignar y editar pesos a las respuestas disponibles de cada pregunta. \\ \hline
     RFS009&CRUD preguntas&El sistema debe dejar al usuario crear, editar, eliminar y guardar las preguntas de la encuesta. \\ \hline
     RFS010&Resultado de encuesta&El sistema debe mostrar los resultados al finalizar la encuesta con el porcentaje de éxito o fracaso.\\ \hline
@@ -248,16 +257,12 @@ Por otro lado, es necesario saber cuales son los requerimientos no funcionales, 
     \endfoot
     % aquí añadimos el fondo de la última hoja.
     \endlastfoot
-    \hline
-    RNS001&Tipos de poblaciones&De acuerdo a los datos de entrada que se recibirán, la población inicial se clasificará en:
-    \begin{itemize}
-        \item \textbf{Población especial: }Se trata de un población que esta sujeta a condiciones especiales como por ejemplo: un nivel de abstención de mas de 90\% o factores externos al sistema sucedidos en la encuesta.
-        \item \textbf{Población promedio: }Una población sin condiciones especiales, donde el nivel de abstención es menor al 30\%.
-    \end{itemize}\\ \hline
-    RNS002&Factor de error&El factor de error que podría tener el sistema sería hasta de 30\% aproximadamente en caso de una población promedio y para una población especial el factor de error alcanzaría hasta el 50\% aproximadamente.\\ \hline
-    RNS003&Rango de pesos&El rango en los pesos de las respuestas debe ser de 1 a 5 para que el sistema sea convergente.\\ \hline
-    RNS004&Tiempo de respuesta&Para el caso de preguntas cerradas el tiempo de respuesta sería como máximo de 1 minuto aproximadamente y para preguntas abiertas un máximo de 5 minutos. \\ \hline
-    RNS005&Interfaces de usuario&Las interfaces deben de ser intuitivas y agradables al usuario.\\ \hline
+    RNS001&Factor de error&El factor de error que podría tener el sistema sería hasta de 30\%* aproximadamente.\\ \hline
+    RNS002&Rango de pesos&El rango en los pesos de las respuestas debe ser de 1 a 5.\\ \hline
     \caption{Requerimientos no funcionales de la aplicación}
     \label{table:RNS}
 \end{longtable}
+
+\textit{* El porcentaje de error es propuesto con base en la publicación de Galam 'The dynamics of minority opinions in democratic debate', donde propone un porcentaje de 30\% para que el cambio de opinión en una determinada población cambie a través del tiempo. \cite{Galam2004}}
+
+\textit{En la literatura consultada (\cite{Galam.1986, Galam2000, Galam2004, Galam1998, Galam2001}) refiere que el 30\% es un margen de error valido en este campo de estudio, dado que existen variables como la variación de la población inicial de un proceso electoral al siguiente, situaciones como abstención, voto nulo o voto foráneo no se pueden considerar y no pueden ser descritas matemáticamente e influyen en el comportamiento de una población.\cite{MarioH.RamirezDiaz2014}}

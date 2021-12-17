@@ -1,19 +1,19 @@
 \chapter{SISPREL}
-\epigraph{\textit{Beware of bugs in the above code. I've only proved it correct, not tried it.     
-	}}{\textit{—  Donald E. Knuth}}
-	\vspace*{5cm}
-	\begin{center}
-		\centering % TU LOGO
-		\includegraphics[width=10.5cm]{example-image}
-	\end{center}
-	\thispagestyle{empty}
-	\newpage
+%\epigraph{\textit{Beware of bugs in the above code. I've only proved it correct, not tried it.     
+%	}}{\textit{—  Donald E. Knuth}}
+%	\vspace*{5cm}
+%	\begin{center}
+%		\centering % TU LOGO
+%		\includegraphics[width=10.5cm]{example-image}
+%	\end{center}
+%	\thispagestyle{empty}
+%	\newpage
 	\vspace*{2cm}
 \section{Planteamiento del Problema}
 Ante la creciente incertidumbre de los partidos políticos sobre la aceptación que tienen en la sociedad, es necesario saber de una manera confiable su nivel de aceptación para que puedan crear sus propuestas para la sociedad.
 
 \section{Solución Propuesta}
-Para solventar el problema de la incertidumbre ante el comportamiento de la sociedad, se realizará un sistema de cálculo predictivo usando el enfoque de la socio-física para la predicción electoral y así estimar el grado de aceptación para un partido político determinado y se complementará con el uso de técnicas de algoritmos genéticos para observar la evolución de la población a través del tiempo.
+Para solventar el problema de la incertidumbre ante el comportamiento de la sociedad, se realizará un sistema de cálculo predictivo usando el enfoque de la socio-física para la predicción electoral y así estimar el grado de aceptación para un partido político determinado para observar la evolución de la población a través del tiempo.
 
 \section{Objetivo}
 Desarrollar un sistema computacional basado en el enfoque de socio-físico que permita realizar predicciones de resultados en los procesos electorales. 
@@ -24,19 +24,87 @@ Desarrollar un sistema computacional basado en el enfoque de socio-físico que p
     \item Los resultados se compararán con estadísticas reales para comprobar su credibilidad.
 \end{itemize}
 
+\section{Estado del Arte}
+En la tabla \ref{table:EdoArte} se detallan 3 aplicaciones que están en el mercado y son similares al proyecto propuesto;
+
+\begin{longtable}{|
+>{\columncolor[HTML]{3166FF}}m{3cm} |m{8cm}|m{3cm}|}
+\hline
+\cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} Software} & \cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} Características} & \cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} Precio en el mercado} \\ \hline
+\endfirsthead
+
+\hline
+\cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} Software} & \cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} Características} & \cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} Precio en el mercado} \\ \hline
+\endhead
+
+\multicolumn{3}{c}{Sigue en la página siguiente.}
+\endfoot
+% aquí añadimos el fondo de la última hoja.
+\endlastfoot
+
+{\color[HTML]{FFFFFF} Real Clear Politics \cite{RealClearPolitics}} & Sitio web enfocado a datos políticos, periodismo de investigación, encuestas, presentando noticias y artículos de opinión de sus propios colaboradores. & Gratis \\ \hline
+{\color[HTML]{FFFFFF} PredictIt \cite{PredictIt}} &Sitio web dedicado al mercado de predicciones con sede en Nueva Zelanda que ofrece: \begin{itemize}
+    \item Compartir en tiempo real los resultados obtenidos sobre eventos políticos y financieros.
+    \item Realizar micro-apuestas.
+    \item Muestra encuestas de popularidad o nivel de aceptación
+\end{itemize}  & Gratis \\ \hline
+{\color[HTML]{FFFFFF} FiveThirtyEight \cite{FiveThirtyEight}} & Sitio web enfocado al análisis de encuestas de opinión, política y economía, cuenta con funciones como: \begin{itemize}
+    \item Mostrar gráficamente el aumento o disminución de votos
+    \item Popularidad de forma general o por estados.
+\end{itemize}& Gratis \\ \hline
+{\color[HTML]{FFFFFF} SISPREL} & Trabajo terminal de la Escuela Superior de Cómputo que consiste en una API para la predicción de elecciones mediante el modelo sociofísico de Galam. & Gratis \\ \hline
+
+\caption{Descripción de software similar al proyecto propuesto}
+\label{table:EdoArte}
+\end{longtable}
+
+
 \section{Justificación}
 La aplicación de la teoría de la socio-física y los modelos desarrollados por Serge Galam en el ámbito político de México ayudaría a tener predicciones con el enfoque de la socio-física y no solamente probabilísticos sobre las predicciones electorales con base a los datos recolectados de elecciones anteriores para estimar el grado de aceptación para un partido político determinado.
-\\
-\\
-Para los políticos puede proporcionar resultados estimados sobre la confiabilidad y aceptación en un proceso electoral mediante la socio-física y no solamente probabilísticos.
 
-\section{Estado del Arte}
+Para los políticos puede proporcionar resultados estimados sobre la confiabilidad y aceptación en un proceso electoral mediante la implementación de cálculos provenientes de la socio-física.
+
+\section{Características de SISPREL en comparación con el software similar encontrado}
+La tabla \ref{table:comparacion} describe una pequeña comparación entre los sistemas que hay disponibles actualmente en el mercado y son similares al proyecto propuesto. Las características mostradas en la tabla son las que comparten la mayoría en común.
+
+\begin{longtable}{|
+>{\columncolor[HTML]{3166FF}}m{4.3cm}|m{3cm}|m{2cm}|m{3cm}|m{2cm}|}
+\hline
+\cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} Software\newline Características} & \cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} Real Cleare Politics \cite{RealClearPolitics}} & \cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} PredictIt \cite{PredictIt}} & \cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} FiveThirtyEight \cite{FiveThirtyEight}} & \cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} SISPREL} \\ \hline
+\endfirsthead
+
+\hline
+\cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} Software\newline Características} & \cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} Real Cleare Politics \cite{RealClearPolitics}} & \cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} PredictIt \cite{PredictIt}} & \cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} FiveThirtyEight \cite{FiveThirtyEight}} & \cellcolor[HTML]{3531FF}{\color[HTML]{FFFFFF} SISPREL} \\ \hline
+\endhead
+
+\multicolumn{5}{c}{Sigue en la página siguiente.}
+\endfoot
+% aquí añadimos el fondo de la última hoja.
+\endlastfoot
+
+{\color[HTML]{FFFFFF} Realiza encuestas de opción múltiple} & No & No & No & Si \\ \hline
+{\color[HTML]{FFFFFF} Manejo de usuarios} & Si & Si & No & Si \\ \hline
+{\color[HTML]{FFFFFF} Almacenamiento de información en una base de datos} & No & Si & Si & Si \\ \hline
+{\color[HTML]{FFFFFF} Cálculos de aceptación inicial} & Si & Si & Si & Si \\ \hline
+{\color[HTML]{FFFFFF} Calcular el probable éxito o fracaso de un partido político} & No & No & No & Si \\ \hline
+{\color[HTML]{FFFFFF} Enfocado a México} & No & No & No & Si \\ \hline
+{\color[HTML]{FFFFFF} Mostrar los resultados obtenidos al momento de una encuesta} & Si & Si & Si & Si \\ \hline
+{\color[HTML]{FFFFFF} Disponible en español} & No & No & No & Si \\ \hline
+{\color[HTML]{FFFFFF} Permitir acceso a usuarios} & Si & Si & No & Si \\ \hline
+{\color[HTML]{FFFFFF} Basado en el campo sociofísico} & No & No & No & Si \\ \hline
+
+\caption{Comparación de software similar al proyecto propuesto}
+\label{table:comparacion}
+\end{longtable}
+
+
 %Se puede agregar algo, a consultar con los directores o sinodales
-\subsection{Herramientas Similares a tu sistema}
-\subsubsection{Twitter sentiment analysis for the estimation of voting intention in the 2017 Chilean elections}
-Es un sistema basado en el análisis de publicaciones en Twitter basado en técnicas de análisis de sentimientos para realizar una predicción electoral.\cite{TomasAlegreSepulveda2020}
+%\subsection{Herramientas Similares a tu sistema}
+%\subsubsection{Twitter sentiment analysis for the estimation of voting intention in the 2017 Chilean elections}
+%Es un sistema basado en el análisis de publicaciones en Twitter basado en técnicas de análisis de sentimientos para realizar una predicción electoral.\cite{TomasAlegreSepulveda2020}
 
-\subsubsection{¿Se pueden predecir geográficamente los resultados electorales? Una aplicación del análisis de clusters y outliers espaciales}
-Los resultados de este estudio demuestran que al aplicar la estadística espacial en la geografía electoral es posible predecir los resultados electorales. Se utilizan los conceptos geográficos de cluster y outlier espaciales, y como variable predictiva la segregación espacial socioeconómica.\cite{Perdomo2008}
+%\subsubsection{¿Se pueden predecir geográficamente los resultados electorales? Una aplicación del análisis de clusters y outliers espaciales}
+%Los resultados de este estudio demuestran que al aplicar la estadística espacial en la geografía electoral es posible predecir los resultados electorales. Se utilizan los conceptos geográficos de cluster y outlier espaciales, y como variable predictiva la segregación espacial socioeconómica.\cite{Perdomo2008}
 		
-\subsection{Lo que ofrece tu sistema}
+%\subsection{SISPREL}
+%El presente sistema ofrece la capacidad de crear encuestas, editarlas, guardarlas y eliminarlas mediante el uso de una API desarrollada con Python, con la ayuda de Docker permite el despliegue fácil de la nube de la preferencia de quien use este sistema. Permite realizar predicciones con las respuestas de una encuesta creada anteriormente o permite realizar predicciones sin necesidad de crear una encuesta.

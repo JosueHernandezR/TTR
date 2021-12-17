@@ -1,17 +1,17 @@
 \chapter{Diseño}\label{diseno}
 
-\epigraph{\textit{Sometimes it is the people no one imagines anything of who do the things that no one can imagine.  
-}}{\textit{— Alan Turing}}
-\vspace*{8cm}
-\begin{center}
-	\centering
-	\includegraphics[width=10.5cm]{example-image}
-\end{center}
-\thispagestyle{empty}
-\newpage
-\vspace*{1cm}
+%\epigraph{\textit{Sometimes it is the people no one imagines anything of who do the things that no one can imagine.  
+%}}{\textit{— Alan Turing}}
+%\vspace*{8cm}
+%\begin{center}
+%	\centering
+%	\includegraphics[width=10.5cm]{example-image}
+%\end{center}
+%\thispagestyle{empty}
+%\newpage
+\vspace*{2cm}
 
-En el siguiente capítulo se ve un análisis más a fondo de las reglas de negocio que debe cumplir el sistema, así mismo, el modelo relacional, la arquitectura del sistema usando UML.
+En el siguiente capítulo se ve detalla más a fondo de las reglas de negocio que debe cumplir el sistema, así mismo, el modelo relacional, la arquitectura del sistema usando UML.
 
 \section{Reglas de negocio}
 \begin{longtable}{|l|m{4cm}|m{9.5cm}|}
@@ -62,7 +62,6 @@ Los requerimientos del sistema se transforman en casos de uso necesarios para pl
     \label{graphic:CU-D-contestar-encuesta}
 \end{figure}
 
-\subsection{Opcional, manejar administrador de sistema}
 
 \section{Especificación de casos de uso}
 
@@ -705,27 +704,46 @@ El siguiente diagrama muestran las actividades que se realizan en el cálculo de
     \label{graphic:DA-Realizar predicción}
 \end{figure}
 
-%\section{Diagrama de clases}
+\section{Diagrama de clases}
+En la figura \ref{graphic:DC-SISPREL} se muestra el diagrama de clases general, únicamente se muestran los atributos, las relaciones y las operaciones elementales.
 
-%\subsection{Tipos de clases}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.40]{TT/img/diseño/Class Diagram_sisprel.png}
+    \caption{Diagrama de clases SISPREL}
+    \label{graphic:DC-SISPREL}
+\end{figure}
 
-%\subsection{Clases de entidad}
-
-%\subsection{Clases de frontera}
-
-%\subsection{Clases de control}
 
 \section{Diseño de bases de datos}
 Para el funcionamiento de este sistema será necesaria la implementación de una base de datos, para guardar los datos de los usuarios, las encuestas y sus respuestas.
 
 \subsection{Diagrama de entidad relación}
-SISPREL guardará los datos que están en el siguiente diagrama de entidad-relación.
+SISPREL guardará los datos que están en el diagrama \ref{graphic:entidad-relación} de entidad-relación.
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.450]{TT/img/diseño/SISPREL.png}
     \caption{Diagrama entidad-relación de SISPREL}
     \label{graphic:entidad-relación}
+\end{figure}
+
+\section{Diagrama de arquitectura general del sistema}
+En la figura \ref{graphic:arquitectura-sisprel} se detalla a grandes rasgos el funcionamiento principal de SISPREL.
+\begin{enumerate}
+    \item Se recibe una petición de internet que indica el punto de acceso al que se necesita acceder, esta petición contiene los parámetros necesarios (token, tipo de petición, datos en formato JSON) para que esta sea cumplida.
+    \item La petición es recibida por el contenedor, el cual se encarga de dirigirlo a la API.
+    \item La API procesa la petición mediante los módulos que esta contiene.
+    \item Una vez procesada la API se encarga de realizar las operaciones correspondientes a la base de datos.
+    \item La base de datos guarda y/o entrega los datos solicitados.
+    \item La API procesa los datos otorgados por la base de datos y los envía al usuario.
+\end{enumerate}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.450]{TT/img/diseño/Diagrama-bloques-sisprel.png}
+    \caption{Diagrama de arquitectura general de SISPREL}
+    \label{graphic:arquitectura-sisprel}
 \end{figure}
 
 %\subsection{Modelo relacional}
