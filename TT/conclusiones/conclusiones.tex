@@ -1,27 +1,33 @@
 \chapter{Conclusiones y Trabajo Futuro}
-\epigraph{\textit{Good news, everyone!    
-	}}{\textit{—  Professor Hubert J. Farnsworth}}
-	\vspace*{8cm}
-	\begin{center}
-		\centering
-		\includegraphics[width=10.5cm]{example-image}
-	\end{center}
-	\thispagestyle{empty}
-	\newpage
-\vspace*{2cm}
+%\epigraph{\textit{Good news, everyone!    
+%	}}{\textit{—  Professor Hubert J. Farnsworth}}
+%	\vspace*{8cm}
+%	\begin{center}
+%		\centering
+%		\includegraphics[width=10.5cm]{example-image}
+%	\end{center}
+%	\thispagestyle{empty}
+%	\newpage
+%\vspace*{2cm}
 
 \section{Conclusiones}
-  \blindtext[1]
- 
-\begin{comment}
-\section{Trabajo Terminal II}
-		\begin{itemize}
-			\item
-		\end{itemize}
-\end{comment}
- 
+Durante el desarrollo del proyecto se hicieron muchos cambios al alcance final, puesto que el tiempo era limitado y no se podía aplazar la fecha de entrega. La implementación fue la parte mas complicada del proyecto, dado que las tecnologías que se usaron para resolver el problema planteado tuvieron una curva de aprendizaje mas compleja de lo estimado inicialmente, lo que conllevo al inicio de recortes de características planeadas para el proyecto, gracias a situaciones que se ignoraban, no estaban bajo mi control o no se tenían en cuenta al momento de desarrollar un sistema de software.
+
+Sin embargo, el tiempo fue un factor que jugo en contra del proyecto, por lo que se optó únicamente por desarrollar la API de SISPREL, ya que se encontraron problemas en el diseño de la base de datos y se realizaron las correcciones pertinentes para optimizar el espacio que se vaya a usar sin sacrificar la ventaja de FastAPI que es el tiempo rápido de respuesta ante una petición. También se prescindió del uso de algoritmos genéticos ya que los cálculos e investigaciones realizadas por Galam, sus ecuación cumplen el objetivo de realizar predicción.
+
+Por otro lado, a pesar de los contratiempos presentados en este corto periodo de tiempo se cumplió el objetivo que es realizar las predicciones, crear encuestas, preguntas y opciones de pregunta, así las respuestas de encuestas, se agregó un manejo de usuarios mediante superusuarios y la implementación de Docker con OAuth 2 hace que esta aplicación sea segura y este lista para un despliegue en la nube.
+
+Por último, se ha cumplido los objetivos específicos ya que el presente trabajo. Ambos objetivos son alcanzados en el capítulo de pruebas visto anteriormente, en primer lugar se ratifican los cálculos hechos por Galam en su publicación \cite{Galam2008} con SISPREL siendo la primera prueba del funcionamiento de SISPREL, en segundo lugar se realizan dos pruebas con datos reales provenientes de las elecciones para alcaldes en la Ciudad de México en los periodos 2015 a 2018 y del 2006 al 2009 usando datos del Programa de Resultados Electorales Preliminares de la Ciudad de México de los periodos descritos. El primer periodo que se evaluó fue el del 2015 a 2018 donde los resultados no son explícitos y esto se debe a varios factores como lo es el cambio de alianzas entre partidos, variación de la población inicial de un proceso electoral al siguiente, votos foráneos, entre otros, que, por lo tanto, fue necesario realizar una segunda prueba usando otro periodo de tiempo donde los factores mencionados no fuesen notorios o significativos con los datos de entrada presentados. En la segunda prueba del sistema se obtuvieron resultados mas claros y concisos en comparación con la primera prueba, pudiendo obtener una comparación del pronostico realizado con los datos del 2006 contra los resultados del 2009 mas clara y demostrando que el sistema es confiable ya que se el resultado de las predicciones fueron comparadas con los resultados del 2009, obteniendo un margen aproximado de 11\% de error, siendo inferior al margen de error planteado del 30\%, cumpliendo los dos objetivos específicos: proporcionar a los políticos un resultado probabilístico confiable sobre el grado de aceptación hacía su partido en una contienda electoral y que los resultados fueron comparados con estadísticas reales para comprobar su credibilidad.
+
 
 \subsection{Trabajo Futuro}
 Los siguientes puntos son mejoras plausibles que podrían y deberían tomarse en cuenta para una versión futura del sistema.
-
-\blindtext[1]
+\begin{itemize}
+    \item Algunas de las características planeadas inicialmente están dentro del proyecto tal como lo es el punto de acceso para restablecer contraseña y restaurarla, lo cual implicará configurar un cliente de correo electrónico para realizar dicha tarea.
+    %Agregar a conclusiones
+    %\item El sistema esta basado en contenedores e con un enrutador inverso, lo que le da al sistema una buena estabilidad donde se despliegue ya que puede configurarse fácilmente el balanceo de cargas dependiendo de la nube donde sea desplegado.
+    %Hasta aquí
+    \item SISPREL cuenta con un módulo FrontEnd que consume la API, pero no consume suficientes puntos de acceso ni se desarrolló más vistas para ser integrado en esta primera versión del sistema. Debido a que esta parte del sistema que esta desarrollado en TypeScript y VueJS puede continuar el desarrollo y terminarlo. 
+    \item El sistema cuenta con un diseño de base de datos que puede aprovechar técnicas de minería de textos y con esto, agregar nuevas características o funcionalidades a futuro.
+    \item Por último, el algoritmo puede ser fácilmente actualizado ya que se encuentra dentro de una clase donde se invoca sin tener que estar presente en los puntos de acceso donde se requiera.
+\end{itemize}
