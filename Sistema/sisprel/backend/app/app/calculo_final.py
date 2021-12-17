@@ -62,6 +62,10 @@ class Calculo_final:
     def get_resultados(self):
         return self.resultados
 
+    def get_lambdar(self):
+        return self.lambdar_result
+    def get_pcr(self):
+        return self.pcr
 
     def get_pndr(self):
         return self.pndr * 100
@@ -95,4 +99,20 @@ class Calculo_final:
         self.n_resultados_eliminacion: int = 0
         self.eliminacion_resultados: List = []
         self.n_resultados: int = 0
+
+
+#Pruebas
+
+test = Calculo_final()
+
+p0 = 0.69
+r = 4
+n = 3
+
+test.calculo_final(n,p0,r)
+
+print("Lambda = ", test.get_lambdar())
+print("PC4 = ", test.get_pcr())
+print("PNDR = ", test.get_pndr()/100)
+print("PNFR = ", test.get_pnfr()/100)
 
